@@ -212,7 +212,6 @@ public class FormatIdentifier {
         def formats = [new CZITIFFFormat(),
                        new OMETIFFFormat(),
                        new PhotoshopTIFFFormat(),
-                       new HuronTIFFFormat(),
                        new PlanarTIFFFormat(),
                        new BrokenTIFFFormat(),
                        new PyramidalTIFFFormat()
@@ -234,6 +233,7 @@ public class FormatIdentifier {
         //String vendor = OpenSlide.detectVendor(new File(filePath))
 
         def formats = [
+                               new HuronTIFFFormat(),
                                new AperioSVSFormat(),
                                new HamamatsuNDPIFormat(),
                                new LeicaSCNFormat(),

@@ -21,27 +21,14 @@ import utils.FilesUtils
 
 public class HuronTIFFFormat extends OpenSlideSingleFileFormat
 {
-    public HuronTIFFFormat () 
+    public HuronTIFFFormat ()
     {
-        extensions = ["tif", "tiff"]
-        mimeType = "openslide/tif"
+        extensions = ["tif"]
         vendor = "huron"
+        mimeType = "image/tif"
         widthProperty = "openslide.level[0].width"
         heightProperty = "openslide.level[0].height"
         resolutionProperty = "huron.MPP"
         magnificiationProperty = "huron.AppMag"
-    }
-
-    public boolean detect() 
-    {
-        String tiffinfo = getTiffInfo()
-        return this.detect(tiffinfo)
-    }
-
-    boolean detect(String tiffinfo) 
-    {
-        return tiffinfo.contains("Make: Huron Digital Pathology") && 
-        tiffinfo.contains("Photometric Interpretation: YCbCr") && 
-        tiffinfo.contains("Compression Scheme: JPEG") 
     }
 }

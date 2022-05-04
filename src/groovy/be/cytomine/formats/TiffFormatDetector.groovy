@@ -74,7 +74,6 @@ public class TiffFormatDetector {
         def formats = [new CZITIFFFormat(),
                        new OMETIFFFormat(),
                        new PhotoshopTIFFFormat(),
-                       new HuronTIFFFormat(),
                        new PlanarTIFFFormat(),
                        new BrokenTIFFFormat(),
                        new PyramidalTIFFFormat()
