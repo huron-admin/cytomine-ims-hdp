@@ -1,6 +1,4 @@
-package be.cytomine.formats.lightconvertable.specialtiff
-
-import be.cytomine.formats.ITIFFFormat
+package be.cytomine.formats.supported.digitalpathology
 
 /*
  * Copyright (c) 2009-2018. Authors: see NOTICE file.
@@ -18,11 +16,20 @@ import be.cytomine.formats.ITIFFFormat
  * limitations under the License.
  */
 
-public class HuronTIFFFormat extends ConvertableTIFFFormat implements ITIFFFormat
+import org.openslide.OpenSlide
+import utils.FilesUtils
+
+public class HuronTIFFFormat extends OpenSlideSingleFileFormat
 {
     public HuronTIFFFormat () 
     {
         extensions = ["tif", "tiff"]
+        mimeType = "openslide/tif"
+        vendor = "huron"
+        widthProperty = "openslide.level[0].width"
+        heightProperty = "openslide.level[0].height"
+        resolutionProperty = "huron.MPP"
+        magnificiationProperty = "huron.AppMag"
     }
 
     public boolean detect() 
@@ -33,8 +40,8 @@ public class HuronTIFFFormat extends ConvertableTIFFFormat implements ITIFFForma
 
     boolean detect(String tiffinfo) 
     {
-        return tiffinfo.contains("Make: Huron Digital Pathology") 
-            // && tiffinfo.contains("Photometric Interpretation: YCbCr") 
-            // && tiffinfo.contains("Make: Huron Digital Pathology") 
+        return tiffinfo.contains("Make: Huron Digital Pathology") && 
+        tiffinfo.contains("Photometric Interpretation: YCbCr") && 
+        tiffinfo.contains("Compression Scheme: JPEG") 
     }
 }

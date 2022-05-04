@@ -42,6 +42,7 @@ public class TiffFormatDetector {
                 new JPEG2000Format(),
                 new ZeissCZIFormat(),
                 //openslide compatibles formats
+                new HuronTIFFFormat(),
                 new AperioSVSFormat(),
                 new HamamatsuNDPIFormat(),
                 new LeicaSCNFormat(),
@@ -52,7 +53,6 @@ public class TiffFormatDetector {
                 //common formats
                 new OMETIFFFormat(),
                 new PhotoshopTIFFFormat(),
-                new HuronTIFFFormat(),
                 new PlanarTIFFFormat(),
                 new BrokenTIFFFormat(),
                 new PyramidalTIFFFormat(),

@@ -29,7 +29,6 @@ import be.cytomine.formats.lightconvertable.PGMFormat
 import be.cytomine.formats.lightconvertable.PNGFormat
 import be.cytomine.formats.lightconvertable.specialtiff.BrokenTIFFFormat
 import be.cytomine.formats.lightconvertable.specialtiff.CZITIFFFormat
-import be.cytomine.formats.lightconvertable.specialtiff.HuronTIFFFormat
 import be.cytomine.formats.lightconvertable.specialtiff.PlanarTIFFFormat
 import be.cytomine.formats.lightconvertable.specialtiff.PhotoshopTIFFFormat
 import be.cytomine.formats.supported.VentanaTIFFFormat
