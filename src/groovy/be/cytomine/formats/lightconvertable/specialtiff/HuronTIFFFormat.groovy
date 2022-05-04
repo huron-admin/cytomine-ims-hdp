@@ -18,19 +18,23 @@ import be.cytomine.formats.ITIFFFormat
  * limitations under the License.
  */
 
-public class HuronTIFFFormat extends ConvertableTIFFFormat implements ITIFFFormat {
-    public HuronTIFFFormat () {
+public class HuronTIFFFormat extends ConvertableTIFFFormat implements ITIFFFormat
+{
+    public HuronTIFFFormat () 
+    {
         extensions = ["tif", "tiff"]
     }
 
-    public boolean detect() {
+    public boolean detect() 
+    {
         String tiffinfo = getTiffInfo()
         return this.detect(tiffinfo)
     }
 
-    boolean detect(String tiffinfo) {
-        return !tiffinfo.contains("Compression Scheme: JPEG") && !tiffinfo.contains("Photometric Interpretation: YCbCr") &&
-                tiffinfo.contains("Compression Scheme: None") && tiffinfo.contains("Photometric Interpretation: RGB color") &&
-                tiffinfo.contains("Source = Bright Field")
+    boolean detect(String tiffinfo) 
+    {
+        return tiffinfo.contains("Make: Huron Digital Pathology") 
+            // && tiffinfo.contains("Photometric Interpretation: YCbCr") 
+            // && tiffinfo.contains("Make: Huron Digital Pathology") 
     }
 }
