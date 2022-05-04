@@ -68,6 +68,17 @@ RUN update-java-alternatives -s java-8-oracle && \
     ldconfig
 ENV LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 
+# imagemagick 6.8.9-10 (fix problem with DICOM conversion by vips)
+ARG IMAGE_MAGICK_VERSION=6.8.9-10
+RUN cd /tmp && \
+    wget --no-check-certificate https://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
+    tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
+    cd ImageMagick-${IMAGE_MAGICK_VERSION} && \
+    ./configure && \
+    make && \
+    make install && \
+    ldconfig /usr/local/lib
+
 # vips
 ARG VIPS_VERSION=8.7.1
 RUN cd /tmp && \
@@ -97,10 +108,8 @@ RUN mkdir -p /usr/share/tomcat7/.grails
 RUN ln -s /usr/local/bin/vips /usr/bin/vips && ln -s /usr/local/bin/identify /usr/bin/identify
 
 RUN touch /tmp/addHosts.sh
-#COPY setenv.sh /usr/share/tomcat7/bin/setenv.sh
-COPY setenv.sh /tmp/setenv.sh
-#RUN chmod +x /usr/share/tomcat7/bin/setenv.sh
-RUN chmod +x /tmp/setenv.sh
+COPY setenv.sh /usr/share/tomcat7/bin/setenv.sh
+RUN chmod +x /usr/share/tomcat7/bin/setenv.sh
 COPY deploy.sh /tmp/deploy.sh
 RUN chmod +x /tmp/deploy.sh
 

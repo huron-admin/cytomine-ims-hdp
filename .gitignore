@@ -1,2 +1,4 @@
 *.class
 target/*
+docker/IMS.war
+tmp/openslide.jar

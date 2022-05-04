@@ -3,7 +3,7 @@ set -o errexit
 
 echo "************************************** Publish docker ******************************************"
 
-VERSION_NUMBER="1.0"
+VERSION_NUMBER="1.1"
 
 docker build --no-cache --rm -f docker/Dockerfile -t  huronalex/ims:v$VERSION_NUMBER ./docker
 
