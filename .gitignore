@@ -1,3 +1,4 @@
 *.class
 target/*
 IMS.war
+_IMS.war

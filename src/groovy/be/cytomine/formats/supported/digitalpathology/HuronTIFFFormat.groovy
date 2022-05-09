@@ -24,7 +24,7 @@ import utils.MimeTypeUtils
 import java.awt.image.BufferedImage
 
 @Log4j
-class HuronTIFFFormat extends OpenSlideFormat 
+class HuronTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
 {
     HuronTIFFFormat() 
     {
