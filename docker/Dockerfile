@@ -73,13 +73,12 @@ RUN apt-get -y update && apt-get install --no-install-recommends --no-install-su
     rm -rf /var/lib/apt/lists/*
 
 # openslide
-ARG OPENSLIDE_VERSION=3.4.1
 RUN cd /tmp && \
-    wget https://github.com/openslide/openslide/releases/download/v${OPENSLIDE_VERSION}/openslide-${OPENSLIDE_VERSION}.tar.gz && \
-    tar -zxvf ./openslide-${OPENSLIDE_VERSION}.tar.gz && \
-    cd ./openslide-${OPENSLIDE_VERSION} && \
+    git clone https://github.com/w8choi/openslide && \
+    cd /tmp/openslide && \
+    git checkout master && \
     autoreconf -i && \
-    ./configure && \
+    ./configure && \ 
     make && \
     make install && \
     ldconfig
@@ -129,13 +128,14 @@ RUN apt-get update -y && \
 RUN ln -s /usr/local/tomcat /var/lib/tomcat9 #for backward compatibility
 RUN ln -s /usr/share/tomcat9/.grails /root/.grails #for backward compatibility
 
-ARG RELEASE_PATH=https://github.com/cytomine/Cytomine-IMS/releases/download/v2.0.0
-ADD ${RELEASE_PATH}/IMS.war /var/lib/tomcat9/webapps/ROOT.war
+# ARG RELEASE_PATH=https://github.com/cytomine/Cytomine-IMS/releases/download/v2.0.0
+# ADD ${RELEASE_PATH}/IMS.war /var/lib/tomcat9/webapps/ROOT.war
+# ADD ${RELEASE_PATH}/restapidoc.json /var/lib/tomcat9/webapps/restapidoc.json
+
 ADD IMS.war /var/lib/tomcat9/webapps/ROOT.war
-ADD ${RELEASE_PATH}/restapidoc.json /var/lib/tomcat9/webapps/restapidoc.json
+ADD restapidoc.json /var/lib/tomcat9/webapps/restapidoc.json
 
 RUN mkdir -p /usr/share/tomcat9/.grails
-
 RUN ln -s /usr/local/bin/vips /usr/bin/vips && ln -s /usr/local/bin/identify /usr/bin/identify
 
 RUN touch /tmp/addHosts.sh
