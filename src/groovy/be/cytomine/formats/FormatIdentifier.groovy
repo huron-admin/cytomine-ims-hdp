@@ -60,6 +60,9 @@ class FormatIdentifier {
 
     def initializeFormats() {
         this.formats = [
+                // Most Important
+                new HuronTIFFFormat(), // detector: tiffinfo
+
                 // Fast detections
                 new ZipFormat(), // detector: extension
                 new JPEGFormat(), // detector: image magick
@@ -68,7 +71,6 @@ class FormatIdentifier {
                 new BMPFormat(), // detector: image magick
                 new DICOMFormat(), // detector: image magick
                 new PhotoshopTIFFFormat(), // detector: tiffinfo
-                new HuronTIFFFormat(), // detector: tiffinfo
                 new CZITIFFFormat(), // detector: tiffinfo
                 new OMETIFFFormat(), // detector: tiffinfo
                 new GeoTIFFFormat(), // detector: tiffinfo
@@ -165,6 +167,7 @@ class FormatIdentifier {
 
     static getSupportedImageFormats() {
         return [
+                new HuronTIFFFormat(),
                 new JPEG2000Format(),
                 new PyramidalTIFFFormat(),
                 new AperioSVSFormat(),

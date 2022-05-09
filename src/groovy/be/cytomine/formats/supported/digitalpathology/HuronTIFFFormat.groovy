@@ -1,4 +1,4 @@
-package be.cytomine.formats.lightconvertable.specialtiff
+package be.cytomine.formats.supported.digitalpathology
 
 /*
  * Copyright (c) 2009-2019. Authors: see NOTICE file.
@@ -16,27 +16,20 @@ package be.cytomine.formats.lightconvertable.specialtiff
  * limitations under the License.
  */
 
-import be.cytomine.formats.tools.detectors.TiffInfoDetector
-import be.cytomine.formats.lightconvertable.VIPSConvertable
+import be.cytomine.formats.tools.detectors.OpenSlideDetector
 import groovy.util.logging.Log4j
+import org.openslide.OpenSlide
 import utils.MimeTypeUtils
 
+import java.awt.image.BufferedImage
+
 @Log4j
-class HuronTIFFFormat extends VIPSConvertable implements TiffInfoDetector {
-
-    def requiredKeywords = [
-            "Compression Scheme: None",
-            "Photometric Interpretation: RGB color",
-            "Source = Bright Field"
-    ]
-
-    def forbiddenKeywords = [
-            "Compression Scheme: JPEG",
-            "Photometric Interpretation: YCbCr"
-    ]
-
-    HuronTIFFFormat() {
-        extensions = ["tif", "tiff"]
+class HuronTIFFFormat extends OpenSlideFormat 
+{
+    HuronTIFFFormat() 
+    {
+        super()
+        extensions = ["tif"]
         mimeType = MimeTypeUtils.MIMETYPE_TIFF
     }
 }
