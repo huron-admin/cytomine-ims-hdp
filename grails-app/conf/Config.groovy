@@ -91,14 +91,16 @@ environments {
     }
 }
 log4j = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-    appenders {
-        file name:'logfile', file:'/tmp/ims.log'
+    //Example of changing the log pattern for the default console appender:
+    
+    appenders 
+    {
+       console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     }
+    
+    // appenders {
+    //     file name:'logfile', file:'/tmp/ims.log'
+    // }
 
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -146,8 +148,8 @@ cytomine.ims.charset = "UTF-8"
 
 cytomine.ims.server.url = "http://localhost-ims"
 cytomine.ims.server.core.url = "http://localhost-core"
-cytomine.ims.server.publicKey = ""
-cytomine.ims.server.privateKey = ""
+cytomine.ims.server.publicKey = "8e86547a-eec3-460b-a3f6-3f97ccdacd0d"
+cytomine.ims.server.privateKey = "675554ff-7656-4a34-bd07-07fc10369782"
 
 cytomine.ims.path.buffer = "/tmp/uploaded"
 cytomine.ims.path.storage = "/data/images"
