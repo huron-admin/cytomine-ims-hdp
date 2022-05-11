@@ -47,6 +47,8 @@ class PyramidalTIFFFormat extends NativeFormat implements TiffInfoDetector {
     }
 
     def forbiddenKeywords = [
+            "Huron Digital Pathology",
+            "Huron",
             "Not a TIFF",
             "<iScan",
             //"Hamamatsu",

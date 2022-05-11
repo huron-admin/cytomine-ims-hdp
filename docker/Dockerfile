@@ -16,9 +16,6 @@
 
 FROM tomcat:9.0-jdk8-openjdk
 
-MAINTAINER Cytomine SCRLFS "support@cytomine.coop"
-
-
 # base librairies and configuration
 RUN apt-get update -y && apt-get -y install \
       build-essential \

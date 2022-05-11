@@ -301,7 +301,8 @@ class UploadService {
 
         }
 
-        if (format instanceof NativeFormat) {
+        if (format instanceof NativeFormat) 
+        {
             uploadedFile.changeStatus(UploadedFile.Status.DEPLOYING)
             log.info("uploadedFile (status) : "+uploadedFile.toString()+" "+uploadedFile.get("status"))
 
@@ -318,19 +319,37 @@ class UploadService {
                 uploadedFile.update()
             }
 
-            try {
+            log.info("\n\t------------------ Create Abstract Slice ------------------ \n")
+
+            try 
+            {
+                log.info("->\t Init Slice")
                 AbstractSlice slice = createAbstractSlice(uploadInfo.userConn, uploadedFile, abstractImage, format, currentFile)
+                log.info("->\t Add Slice")
                 result.slices.add(slice)
+
                 // fetch to get the last uploadedFile with the image
+                log.info("->\t Fetch")
                 uploadedFile = new UploadedFile().fetch(uploadedFile.id)
-                if (abstractImage.getLong("uploadedFile") != uploadedFile.getId()) {
+
+                log.info("->\t Check ID")
+                if (abstractImage.getLong("uploadedFile") != uploadedFile.getId()) 
+                {
+                    log.info("->\t Deploying")
                     uploadedFile.changeStatus(UploadedFile.Status.DEPLOYED)
+                    log.info("->\t Deployed")
                 }
-            } catch (CytomineException e) {
+
+                log.info("->\t End Slice")
+            } 
+            catch (CytomineException e) 
+            {
                 uploadedFile.changeStatus(UploadedFile.Status.ERROR_DEPLOYMENT)
                 throw new DeploymentException(e.getMsg(), result)
             }
-        } else {
+        } 
+        else 
+        {
             uploadedFile.changeStatus(UploadedFile.Status.CONVERTING)
 
             def errors = []
@@ -347,12 +366,15 @@ class UploadService {
             GParsExecutorsPool.withPool(nThreads) {
                 def outputs = files.collectParallel { file ->
                     def output = [:]
-                    try {
+
+                    try 
+                    {
                         def deployed = deploy(file as CytomineFile, null, uploadedFile, abstractImage, uploadInfo)
                         output.images = deployed.images
                         output.slices = deployed.slices
                     }
-                    catch (DeploymentException e) {
+                    catch (DeploymentException e) 
+                    {
 
                     }
 
@@ -430,10 +452,31 @@ class UploadService {
         return image.fetch(image.id)
     }
 
-    private AbstractSlice createAbstractSlice(CytomineConnection userConn, UploadedFile uploadedFile, AbstractImage image, Format format, CytomineFile file) {
+    private AbstractSlice createAbstractSlice(CytomineConnection userConn, UploadedFile uploadedFile, AbstractImage image, Format format, CytomineFile file) 
+    {
+        log.info("->\t new AbstractSlice")
+        log.info("\n CytomineConnection: ${userConn}")
+        log.info("\n UploadedFile: ${uploadedFile}")
+        log.info("\n AbstractImage: ${image}\n Filename: ${image.filename} \n Mime: ${image.mime}")
+
+        log.info("\n Format: ${format}\n Extensions: ${format.extensions}\n MimeType: ${format.mimeType}\n CytomineFile: ${format.file}")
+        log.info("\n CytomineFile: ${file}")
+
         def slice = new AbstractSlice(image, uploadedFile, format.mimeType, file.c as Integer, file.z as Integer, file.t as Integer)
-        if (file.channelName) slice.set("channelName", file.channelName)
+
+        log.info("\n AbstractSlice: ${slice}\n MimeType: ${slice.getStr("mime")}")
+
+        log.info("->\t if (file.channelName)")
+        if (file.channelName) 
+        {
+            log.info("->\t slice.set")
+            slice.set("channelName", file.channelName)
+        }
+
+        log.info("->\t slice.save(userConn)")
         slice.save(userConn)
+
+        log.info("->\t return slice")
         return slice
     }
 }

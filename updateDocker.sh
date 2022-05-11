@@ -1,5 +1,6 @@
 
-CONTAINER="ims"
 
-docker cp ./IMS.war  $CONTAINER:/var/lib/tomcat9/webapps/ROOT.war
-docker restart $CONTAINER
+docker cp ./IMS.war  ims:/var/lib/tomcat9/webapps/ROOT.war
+
+sleep 5
+docker restart ims

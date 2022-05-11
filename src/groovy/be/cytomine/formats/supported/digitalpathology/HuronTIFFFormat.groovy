@@ -16,6 +16,7 @@ package be.cytomine.formats.supported.digitalpathology
  * limitations under the License.
  */
 
+import be.cytomine.formats.tools.CustomExtensionFormat
 import be.cytomine.formats.tools.detectors.OpenSlideDetector
 import groovy.util.logging.Log4j
 import org.openslide.OpenSlide
@@ -26,10 +27,27 @@ import java.awt.image.BufferedImage
 @Log4j
 class HuronTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
 {
+    String vendor = "huron"
+    String customExtension = "tif"
+
     HuronTIFFFormat() 
     {
         super()
         extensions = ["tif"]
-        mimeType = MimeTypeUtils.MIMETYPE_TIFF
+        mimeType = MimeTypeUtils.MIMETYPE_SVS
+    }
+
+    boolean detect() 
+    {
+        log.info("\n----------------------- Checking -----------------------------")
+
+        if(OpenSlideDetector.super.detect())
+        {
+            log.info("\n\t Huron TIFF Detected")
+            return true
+        }
+
+        log.info("\n\t NOT Huron TIFF")
+        return false
     }
 }
