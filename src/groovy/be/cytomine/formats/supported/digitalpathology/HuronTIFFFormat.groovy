@@ -25,29 +25,15 @@ import utils.MimeTypeUtils
 import java.awt.image.BufferedImage
 
 @Log4j
-class HuronTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
+class HuronTIFFFormat extends OpenSlideFormat implements OpenSlideDetector, CustomExtensionFormat 
 {
     String vendor = "huron"
-    String customExtension = "tif"
+    String customExtension = "svs"
 
     HuronTIFFFormat() 
     {
         super()
-        extensions = ["tif"]
+        extensions = ["svs"]
         mimeType = MimeTypeUtils.MIMETYPE_SVS
-    }
-
-    boolean detect() 
-    {
-        log.info("\n----------------------- Checking -----------------------------")
-
-        if(OpenSlideDetector.super.detect())
-        {
-            log.info("\n\t Huron TIFF Detected")
-            return true
-        }
-
-        log.info("\n\t NOT Huron TIFF")
-        return false
     }
 }

@@ -21,7 +21,9 @@ import groovy.util.logging.Log4j
 @Log4j
 trait OpenSlideDetector extends Detector {
 
-    boolean detect() {
+    boolean detect() 
+    {
+        log.info("\t\t->Vendor: ${this.vendor} == ${this.file.getOpenSlideVendor()}")
         return this.file.getOpenSlideVendor() == this.vendor
     }
 }
