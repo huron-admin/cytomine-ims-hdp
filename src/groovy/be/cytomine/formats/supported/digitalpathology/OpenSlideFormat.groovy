@@ -35,6 +35,7 @@ abstract class OpenSlideFormat extends NativeFormat implements CustomExtensionFo
 
     protected OpenSlideFormat() {
         iipUrl = Holders.config.cytomine.ims.openslide.iip.url
+        
         cytominePropertyKeys << ["cytomine.width": "openslide.level[0].width"]
         cytominePropertyKeys << ["cytomine.height": "openslide.level[0].height"]
         cytominePropertyKeys << ["cytomine.physicalSizeX": "openslide.mpp-x"]

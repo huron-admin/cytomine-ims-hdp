@@ -62,6 +62,7 @@ class FormatIdentifier {
         this.formats = [
                 // Most Important
                 new HuronTIFFFormat(), // detector: tiffinfo
+                new GenericTIFFFormat(),
 
                 // Fast detections
                 new ZipFormat(), // detector: extension
@@ -174,6 +175,7 @@ class FormatIdentifier {
     static getSupportedImageFormats() {
         return [
                 new HuronTIFFFormat(),
+                new GenericTIFFFormat(),
                 new JPEG2000Format(),
                 new PyramidalTIFFFormat(),
                 new AperioSVSFormat(),

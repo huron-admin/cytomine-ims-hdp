@@ -26,12 +26,12 @@ import utils.PropertyUtils
 import java.awt.image.BufferedImage
 
 @Log4j
-class HuronTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
+class GenericTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
 {
-    String vendor = "huron"
+    String vendor = "generic-tiff"
     String customExtension = "svs"
 
-    HuronTIFFFormat() 
+    GenericTIFFFormat() 
     {
         super()
         extensions = ["svs"]
