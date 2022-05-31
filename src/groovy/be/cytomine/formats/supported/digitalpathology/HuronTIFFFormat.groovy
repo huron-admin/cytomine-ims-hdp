@@ -29,12 +29,12 @@ import java.awt.image.BufferedImage
 class HuronTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
 {
     String vendor = "huron"
-    String customExtension = "svs"
+    String customExtension = "tif"
 
     HuronTIFFFormat() 
     {
         super()
-        extensions = ["svs"]
+        extensions = ["tif"]
         mimeType = MimeTypeUtils.MIMETYPE_SVS
     }
 }
