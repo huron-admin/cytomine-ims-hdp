@@ -73,9 +73,9 @@ RUN apt-get -y update && apt-get install --no-install-recommends --no-install-su
     rm -rf /var/lib/apt/lists/*
 
 # openslide
-ARG OPENSLIDE_VERSION=3.4.1
+ARG OPENSLIDE_VERSION=3.4.2-huron
 RUN cd /tmp && \
-    wget https://github.com/openslide/openslide/releases/download/v${OPENSLIDE_VERSION}/openslide-${OPENSLIDE_VERSION}.tar.gz && \
+    wget https://github.com/w8choi/openslide/releases/download/v${OPENSLIDE_VERSION}/openslide-${OPENSLIDE_VERSION}.tar.gz && \
     tar -zxvf ./openslide-${OPENSLIDE_VERSION}.tar.gz && \
     cd ./openslide-${OPENSLIDE_VERSION} && \
     autoreconf -i && \
@@ -131,7 +131,7 @@ RUN ln -s /usr/share/tomcat9/.grails /root/.grails #for backward compatibility
 
 ARG RELEASE_PATH=https://github.com/cytomine/Cytomine-IMS/releases/download/v2.0.0
 ADD ${RELEASE_PATH}/IMS.war /var/lib/tomcat9/webapps/ROOT.war
-ADD IMS.war /var/lib/tomcat9/webapps/ROOT.war
+#ADD IMS.war /var/lib/tomcat9/webapps/ROOT.war
 ADD ${RELEASE_PATH}/restapidoc.json /var/lib/tomcat9/webapps/restapidoc.json
 
 RUN mkdir -p /usr/share/tomcat9/.grails
