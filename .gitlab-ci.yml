@@ -12,6 +12,7 @@ variables:
   variables:
     DOCKER_HOST: tcp://docker:2375
     DOCKER_TLS_CERTDIR: ""
+    DOCKER_BUILDKIT: 1
   before_script:
     - apk update >/dev/null && apk add --no-cache make >/dev/null
     - echo "${IRONBANK_REGISTRY_PASSWORD}" | docker login --username "${IRONBANK_REGISTRY_USER}" --password-stdin "${IRONBANK_REGISTRY}"

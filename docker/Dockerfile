@@ -25,9 +25,7 @@ FROM openjdk:8u292-slim AS war-builder
 WORKDIR /app
 
 RUN apt-get update -y && apt-get install wget unzip -y
-RUN mkdir /tools
-RUN wget https://github.com/grails/grails-core/releases/download/v2.4.4/grails-2.4.4.zip -O /tools/grails.zip
-RUN ls -lh /tools
+RUN mkdir /tools && wget https://github.com/grails/grails-core/releases/download/v2.4.4/grails-2.4.4.zip -O /tools/grails.zip
 RUN unzip /tools/grails.zip -d /tools
 
 COPY ./grails-app/conf/BuildConfig.groovy /app/grails-app/conf/BuildConfig.groovy
