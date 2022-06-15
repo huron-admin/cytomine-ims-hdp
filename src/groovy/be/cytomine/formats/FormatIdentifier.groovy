@@ -118,13 +118,11 @@ class FormatIdentifier {
         return this.formats.findAll { !(it instanceof MultipleFilesFormat) }
     }
 
-    Format identify() 
-    {
+    Format identify() {
         log.info("\nIDENTIFY 1: ")
         def formatsToTest = (file.isDirectory()) ? getMultipleFilesFormats() : getSingleFileFormats()
 
-        Format detected = formatsToTest.find 
-        {
+        Format detected = formatsToTest.find {
             it.detect()
         }
 
@@ -135,13 +133,11 @@ class FormatIdentifier {
         return detected
     }
 
-    def identify(String mimeType, def onlyNative = false) 
-    {
+    def identify(String mimeType, def onlyNative = false) {
         log.info("\nIDENTIFY 2: ")
         def formatsToTest = (onlyNative) ? getNativeFormats() : this.formats
 
-        Format detected = formatsToTest.find 
-        {
+        Format detected = formatsToTest.find {
             it.mimeType == mimeType
         }
 
@@ -199,6 +195,5 @@ class FormatIdentifier {
 
         imageFormat.setFile(new CytomineFile(fif))
         return imageFormat
-
     }
 }

@@ -26,13 +26,11 @@ import utils.PropertyUtils
 import java.awt.image.BufferedImage
 
 @Log4j
-class GenericTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
-{
+class GenericTIFFFormat extends OpenSlideFormat implements OpenSlideDetector {
     String vendor = "generic-tiff"
     String customExtension = "tif"
 
-    GenericTIFFFormat() 
-    {
+    GenericTIFFFormat() {
         super()
         extensions = ["tif"]
         mimeType = MimeTypeUtils.MIMETYPE_SVS

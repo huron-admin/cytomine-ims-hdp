@@ -93,8 +93,7 @@ class CytomineService {
         return messageToSign
     }
 
-    def testSignature(def privateKey, def signature, def messageToSign) 
-    {
+    def testSignature(def privateKey, def signature, def messageToSign) {
         SecretKeySpec signingKey = new SecretKeySpec(privateKey.getBytes(), "HmacSHA1")
         Mac mac = Mac.getInstance("HmacSHA1")
         mac.init(signingKey)

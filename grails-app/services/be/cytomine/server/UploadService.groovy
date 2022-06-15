@@ -301,8 +301,7 @@ class UploadService {
 
         }
 
-        if (format instanceof NativeFormat) 
-        {
+        if (format instanceof NativeFormat) {
             uploadedFile.changeStatus(UploadedFile.Status.DEPLOYING)
             log.info("uploadedFile (status) : "+uploadedFile.toString()+" "+uploadedFile.get("status"))
 
@@ -319,10 +318,7 @@ class UploadService {
                 uploadedFile.update()
             }
 
-            log.info("\n\t------------------ Create Abstract Slice ------------------ \n")
-
-            try 
-            {
+            try {
                 log.info("->\t Init Slice")
                 AbstractSlice slice = createAbstractSlice(uploadInfo.userConn, uploadedFile, abstractImage, format, currentFile)
                 log.info("->\t Add Slice")
@@ -342,14 +338,12 @@ class UploadService {
 
                 log.info("->\t End Slice")
             } 
-            catch (CytomineException e) 
-            {
+            catch (CytomineException e) {
                 uploadedFile.changeStatus(UploadedFile.Status.ERROR_DEPLOYMENT)
                 throw new DeploymentException(e.getMsg(), result)
             }
         } 
-        else 
-        {
+        else {
             uploadedFile.changeStatus(UploadedFile.Status.CONVERTING)
 
             def errors = []
@@ -367,14 +361,12 @@ class UploadService {
                 def outputs = files.collectParallel { file ->
                     def output = [:]
 
-                    try 
-                    {
+                    try {
                         def deployed = deploy(file as CytomineFile, null, uploadedFile, abstractImage, uploadInfo)
                         output.images = deployed.images
                         output.slices = deployed.slices
                     }
-                    catch (DeploymentException e) 
-                    {
+                    catch (DeploymentException e) {
 
                     }
 
@@ -452,31 +444,15 @@ class UploadService {
         return image.fetch(image.id)
     }
 
-    private AbstractSlice createAbstractSlice(CytomineConnection userConn, UploadedFile uploadedFile, AbstractImage image, Format format, CytomineFile file) 
-    {
-        log.info("->\t new AbstractSlice")
-        log.info("\n CytomineConnection: ${userConn}")
-        log.info("\n UploadedFile: ${uploadedFile}")
-        log.info("\n AbstractImage: ${image}\n Filename: ${image.filename} \n Mime: ${image.mime}")
-
-        log.info("\n Format: ${format}\n Extensions: ${format.extensions}\n MimeType: ${format.mimeType}\n CytomineFile: ${format.file}")
-        log.info("\n CytomineFile: ${file}")
-
+    private AbstractSlice createAbstractSlice(CytomineConnection userConn, UploadedFile uploadedFile, AbstractImage image, Format format, CytomineFile file) {
         def slice = new AbstractSlice(image, uploadedFile, format.mimeType, file.c as Integer, file.z as Integer, file.t as Integer)
 
-        log.info("\n AbstractSlice: ${slice}\n MimeType: ${slice.getStr("mime")}")
-
-        log.info("->\t if (file.channelName)")
-        if (file.channelName) 
-        {
+        if (file.channelName) {
             log.info("->\t slice.set")
             slice.set("channelName", file.channelName)
         }
-
-        log.info("->\t slice.save(userConn)")
+        
         slice.save(userConn)
-
-        log.info("->\t return slice")
         return slice
     }
 }

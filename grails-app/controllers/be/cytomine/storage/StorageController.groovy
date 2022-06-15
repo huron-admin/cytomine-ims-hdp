@@ -50,8 +50,7 @@ class StorageController {
             @RestApiParam(name="values", type="String", paramType = RestApiParamType.QUERY, description = "The values of the properties link with image, separated by comma", required = false)
     ])
     def upload () {
-        try 
-        {
+        try {
             log.info("\n\n --------------------------- UPLOAD --------------------------- \n")
 
             for (par in params)
@@ -63,20 +62,15 @@ class StorageController {
             if (params.idProject) params.projects = params.idProject
 
             String coreURL = params.core
-
             String ISPublicKey = grailsApplication.config.cytomine.ims.server.publicKey
             String ISPrivateKey = grailsApplication.config.cytomine.ims.server.privateKey
             log.info "Upload is made on Cytomine = $coreURL with image server $ISPublicKey/$ISPrivateKey key pair"
-
             CytomineConnection imsConnection = Cytomine.connection(coreURL, ISPublicKey, ISPrivateKey, true)
 
             // Check user authentication
             def authorization = cytomineService.getAuthorizationFromRequest(request)
             def messageToSign = cytomineService.getMessageToSignFromRequest(request)
-
-            log.info("Cytomine.getInstance().getKeys")
             def keys = Cytomine.getInstance().getKeys(authorization.publicKey)
-
             log.info (keys.getAttr())
             log.info ("\n--------------- Signature --------------- ")
             log.info (authorization.signature)
@@ -88,7 +82,6 @@ class StorageController {
             if (!cytomineService.testSignature(keys.get('privateKey'), authorization.signature, messageToSign))
                 throw new AuthenticationException("Auth failed.")
 
-            log.info("CytomineConnection userConnection")
             CytomineConnection userConnection = new CytomineConnection(coreURL, (String) keys.get('publicKey'), (String) keys.get('privateKey'))
             def user = userConnection.getCurrentUser()
 
@@ -156,16 +149,14 @@ class StorageController {
 
             render responseContent as JSON
         }
-        catch (CytomineException e) 
-        {
+        catch (CytomineException e) {
             log.error(e.toString())
             log.error(e.getMessage())
             log.error(e.printStackTrace())
             response.status = e.getHttpCode()
             render e.toString()
         }
-        catch (Exception e) 
-        {
+        catch (Exception e) {
             log.error(e.toString())
             log.error(e.printStackTrace())
             response.status = 400
