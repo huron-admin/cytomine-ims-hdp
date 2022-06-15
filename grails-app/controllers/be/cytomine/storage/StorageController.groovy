@@ -54,13 +54,15 @@ class StorageController {
         {
             log.info("\n\n --------------------------- UPLOAD --------------------------- \n")
 
+            for (par in params)
+                log.info "\t $par.key: $par.value"
+
             // Backwards compatibility
             if (params.cytomine) params.core = params.cytomine
             if (params.idStorage) params.storage = params.idStorage
             if (params.idProject) params.projects = params.idProject
 
             String coreURL = params.core
-            log.info("\nCORE URL: $coreURL\n Storage ID: $params.idStorage")
 
             String ISPublicKey = grailsApplication.config.cytomine.ims.server.publicKey
             String ISPrivateKey = grailsApplication.config.cytomine.ims.server.privateKey
@@ -78,6 +80,8 @@ class StorageController {
             log.info (keys.getAttr())
             log.info ("\n--------------- Signature --------------- ")
             log.info (authorization.signature)
+            log.info (messageToSign)
+
             if (!keys)
                 throw new AuthenticationException("Auth failed: User not found! May be ImageServer user is not an admin!")
 

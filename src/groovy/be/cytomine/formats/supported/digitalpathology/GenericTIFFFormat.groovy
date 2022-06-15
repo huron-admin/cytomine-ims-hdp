@@ -29,12 +29,12 @@ import java.awt.image.BufferedImage
 class GenericTIFFFormat extends OpenSlideFormat implements OpenSlideDetector
 {
     String vendor = "generic-tiff"
-    String customExtension = "svs"
+    String customExtension = "tif"
 
     GenericTIFFFormat() 
     {
         super()
-        extensions = ["svs"]
+        extensions = ["tif"]
         mimeType = MimeTypeUtils.MIMETYPE_SVS
     }
 }
