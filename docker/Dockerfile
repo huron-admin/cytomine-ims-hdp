@@ -70,10 +70,11 @@ RUN apt-get -y update && apt-get install --no-install-recommends --no-install-su
     rm -rf /var/lib/apt/lists/*
 
 # openslide
+ARG OPENSLIDE_VERSION=3.4.2-huron
 RUN cd /tmp && \
-    git clone https://github.com/w8choi/openslide && \
-    cd /tmp/openslide && \
-    git checkout master && \
+    wget https://github.com/w8choi/openslide/releases/download/v${OPENSLIDE_VERSION}/openslide-${OPENSLIDE_VERSION}.tar.gz && \
+    tar -zxvf ./openslide-${OPENSLIDE_VERSION}.tar.gz && \
+    cd ./openslide-${OPENSLIDE_VERSION} && \
     autoreconf -i && \
     ./configure && \ 
     make && \

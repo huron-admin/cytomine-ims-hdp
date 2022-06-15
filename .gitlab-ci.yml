@@ -1,0 +1,49 @@
+default:
+  image: git.hurondigitalpathology.com:5005/docker/docker:20.10
+  tags: ["pine"]
+
+include:
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+variables:
+  GIT_DEPTH: 10
+
+.docker:
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - apk update >/dev/null && apk add --no-cache make >/dev/null
+    - echo "${IRONBANK_REGISTRY_PASSWORD}" | docker login --username "${IRONBANK_REGISTRY_USER}" --password-stdin "${IRONBANK_REGISTRY}"
+    - echo "${CI_REGISTRY_PASSWORD}" | docker login --username "${CI_REGISTRY_USER}" --password-stdin "${CI_REGISTRY}"
+    - apk update > /dev/null && apk add --no-cache openssh-client >/dev/null
+    - mkdir -p -m 0600 ~/.ssh
+    - ssh-keyscan git.hurondigitalpathology.com >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  after_script:
+    - docker push ${CI_REGISTRY_IMAGE} --all-tags
+    - docker logout ${IRONBANK_REGISTRY}
+    - docker logout ${CI_REGISTRY}
+
+build-rc:
+  tags: ["docker-build"]
+  stage: build
+  extends: .docker
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH
+    - when: never
+  script:
+    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:rc-$(date "+%Y%m%d%H%M%S")" ./docker
+
+build:
+  tags: ["docker-build"]
+  stage: build
+  extends: .docker
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_TAG
+    - when: never
+  script:
+    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" ./docker
+    - docker tag "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" "${CI_REGISTRY_IMAGE}:latest"
