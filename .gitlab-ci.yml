@@ -12,6 +12,7 @@ variables:
   variables:
     DOCKER_HOST: tcp://docker:2375
     DOCKER_TLS_CERTDIR: ""
+    DOCKER_BUILDKIT: 1
   before_script:
     - apk update >/dev/null && apk add --no-cache make >/dev/null
     - echo "${IRONBANK_REGISTRY_PASSWORD}" | docker login --username "${IRONBANK_REGISTRY_USER}" --password-stdin "${IRONBANK_REGISTRY}"
@@ -35,7 +36,7 @@ build-rc:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH
     - when: never
   script:
-    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:rc-$(date "+%Y%m%d%H%M%S")" ./docker
+    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:rc-$(date "+%Y%m%d%H%M%S")" .
 
 build:
   tags: ["docker-build"]
@@ -45,5 +46,5 @@ build:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_TAG
     - when: never
   script:
-    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" ./docker
+    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" .
     - docker tag "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}" "${CI_REGISTRY_IMAGE}:latest"
