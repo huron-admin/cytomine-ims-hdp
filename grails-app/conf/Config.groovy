@@ -91,8 +91,11 @@ environments {
     }
 }
 log4j = {
-    //Example of changing the log pattern for the default console appender:
-    
+    // Example of changing the log pattern for the default console appender:
+    //
+    //appenders {
+    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    //}
     appenders {
         file name:'logfile', file:'/tmp/ims.log'
     }

@@ -72,9 +72,6 @@ class StorageController {
             def messageToSign = cytomineService.getMessageToSignFromRequest(request)
             def keys = Cytomine.getInstance().getKeys(authorization.publicKey)
             log.info (keys.getAttr())
-            log.info ("\n--------------- Signature --------------- ")
-            log.info (authorization.signature)
-            log.info (messageToSign)
 
             if (!keys)
                 throw new AuthenticationException("Auth failed: User not found! May be ImageServer user is not an admin!")
@@ -85,7 +82,6 @@ class StorageController {
             CytomineConnection userConnection = new CytomineConnection(coreURL, (String) keys.get('publicKey'), (String) keys.get('privateKey'))
             def user = userConnection.getCurrentUser()
 
-            log.info("Check and get storage")
             // Check and get storage
             def storage = new Storage().fetch(userConnection, params.long('storage'))
 

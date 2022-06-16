@@ -319,31 +319,23 @@ class UploadService {
             }
 
             try {
-                log.info("->\t Init Slice")
                 AbstractSlice slice = createAbstractSlice(uploadInfo.userConn, uploadedFile, abstractImage, format, currentFile)
-                log.info("->\t Add Slice")
                 result.slices.add(slice)
 
                 // fetch to get the last uploadedFile with the image
-                log.info("->\t Fetch")
                 uploadedFile = new UploadedFile().fetch(uploadedFile.id)
 
-                log.info("->\t Check ID")
-                if (abstractImage.getLong("uploadedFile") != uploadedFile.getId()) 
-                {
+                if (abstractImage.getLong("uploadedFile") != uploadedFile.getId()) {
                     log.info("->\t Deploying")
                     uploadedFile.changeStatus(UploadedFile.Status.DEPLOYED)
                     log.info("->\t Deployed")
                 }
-
-                log.info("->\t End Slice")
             } 
             catch (CytomineException e) {
                 uploadedFile.changeStatus(UploadedFile.Status.ERROR_DEPLOYMENT)
                 throw new DeploymentException(e.getMsg(), result)
             }
-        } 
-        else {
+        } else {
             uploadedFile.changeStatus(UploadedFile.Status.CONVERTING)
 
             def errors = []
@@ -360,7 +352,6 @@ class UploadService {
             GParsExecutorsPool.withPool(nThreads) {
                 def outputs = files.collectParallel { file ->
                     def output = [:]
-
                     try {
                         def deployed = deploy(file as CytomineFile, null, uploadedFile, abstractImage, uploadInfo)
                         output.images = deployed.images
@@ -446,12 +437,7 @@ class UploadService {
 
     private AbstractSlice createAbstractSlice(CytomineConnection userConn, UploadedFile uploadedFile, AbstractImage image, Format format, CytomineFile file) {
         def slice = new AbstractSlice(image, uploadedFile, format.mimeType, file.c as Integer, file.z as Integer, file.t as Integer)
-
-        if (file.channelName) {
-            log.info("->\t slice.set")
-            slice.set("channelName", file.channelName)
-        }
-        
+        if (file.channelName) { slice.set("channelName", file.channelName) }
         slice.save(userConn)
         return slice
     }

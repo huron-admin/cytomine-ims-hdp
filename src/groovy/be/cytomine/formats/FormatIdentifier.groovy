@@ -119,7 +119,6 @@ class FormatIdentifier {
     }
 
     Format identify() {
-        log.info("\nIDENTIFY 1: ")
         def formatsToTest = (file.isDirectory()) ? getMultipleFilesFormats() : getSingleFileFormats()
 
         Format detected = formatsToTest.find {
@@ -134,7 +133,6 @@ class FormatIdentifier {
     }
 
     def identify(String mimeType, def onlyNative = false) {
-        log.info("\nIDENTIFY 2: ")
         def formatsToTest = (onlyNative) ? getNativeFormats() : this.formats
 
         Format detected = formatsToTest.find {
