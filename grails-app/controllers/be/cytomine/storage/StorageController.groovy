@@ -70,9 +70,9 @@ class StorageController {
             // Check user authentication
             def authorization = cytomineService.getAuthorizationFromRequest(request)
             def messageToSign = cytomineService.getMessageToSignFromRequest(request)
+
             def keys = Cytomine.getInstance().getKeys(authorization.publicKey)
             log.info (keys.getAttr())
-
             if (!keys)
                 throw new AuthenticationException("Auth failed: User not found! May be ImageServer user is not an admin!")
 

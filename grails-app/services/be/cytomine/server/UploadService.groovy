@@ -321,17 +321,12 @@ class UploadService {
             try {
                 AbstractSlice slice = createAbstractSlice(uploadInfo.userConn, uploadedFile, abstractImage, format, currentFile)
                 result.slices.add(slice)
-
                 // fetch to get the last uploadedFile with the image
                 uploadedFile = new UploadedFile().fetch(uploadedFile.id)
-
                 if (abstractImage.getLong("uploadedFile") != uploadedFile.getId()) {
-                    log.info("->\t Deploying")
                     uploadedFile.changeStatus(UploadedFile.Status.DEPLOYED)
-                    log.info("->\t Deployed")
                 }
-            } 
-            catch (CytomineException e) {
+            } catch (CytomineException e) {
                 uploadedFile.changeStatus(UploadedFile.Status.ERROR_DEPLOYMENT)
                 throw new DeploymentException(e.getMsg(), result)
             }
@@ -437,7 +432,7 @@ class UploadService {
 
     private AbstractSlice createAbstractSlice(CytomineConnection userConn, UploadedFile uploadedFile, AbstractImage image, Format format, CytomineFile file) {
         def slice = new AbstractSlice(image, uploadedFile, format.mimeType, file.c as Integer, file.z as Integer, file.t as Integer)
-        if (file.channelName) { slice.set("channelName", file.channelName) }
+        if (file.channelName) slice.set("channelName", file.channelName) 
         slice.save(userConn)
         return slice
     }
