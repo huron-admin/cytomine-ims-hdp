@@ -44,11 +44,36 @@ class ImageResponseController {
     }
 
     def responseFile(File file) {
+
+        log.info("Response File")
+
         BufferedInputStream bufferedInputStream = file.newInputStream()
-        response.setHeader "Content-disposition", "attachment; filename=\"${file.getName()}\""
-        response.outputStream << bufferedInputStream
-        response.outputStream.flush()
-        bufferedInputStream.close()
+
+        long fileSize = file.length()
+        log.info fileSize
+
+        try {
+            log.info("BufferedInputStream bufferedInputStream = file.newInputStream()")
+
+            response.setContentType("application/octet-stream")
+            response.setHeader("Content-disposition", "attachment; filename=\"${file.getName()}\"")
+            response.setHeader("Connection", "Keep-Alive")
+            response.setHeader("Content-Length", Long.toString(fileSize))
+            log.info("response.setHeader")
+
+            response.outputStream << bufferedInputStream
+            log.info("response.outputStream << bufferedInputStream")
+
+            response.outputStream.flush()
+            log.info("flush")
+
+        } catch (Exception e){
+            log.info(e)
+            throw e
+        } finally {
+            bufferedInputStream.close()
+            log.info("Done")
+        }
     }
 
     /**
