@@ -73,7 +73,7 @@ RUN apt-get -y update && apt-get install --no-install-recommends --no-install-su
 RUN cd /tmp && \
     git clone https://github.com/w8choi/openslide && \
     cd /tmp/openslide && \
-    git checkout master && \
+    git checkout 600a174 && \
     autoreconf -i && \
     ./configure && \ 
     make && \
@@ -98,7 +98,7 @@ ENV LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 # imagemagick 6.8.9-10 (fix problem with DICOM conversion by vips)
 ARG IMAGE_MAGICK_VERSION=6.8.9-10
 RUN cd /tmp && \
-    wget https://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
+    wget http://www.ring.gr.jp/archives/graphics/ImageMagick/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     cd ImageMagick-${IMAGE_MAGICK_VERSION} && \
     ./configure && \
