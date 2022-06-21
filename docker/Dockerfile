@@ -139,7 +139,7 @@ ENV LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 # imagemagick 6.8.9-10 (fix problem with DICOM conversion by vips)
 ARG IMAGE_MAGICK_VERSION
 RUN cd /tmp && \
-    wget https://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
+    wget http://www.ring.gr.jp/archives/graphics/ImageMagick/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     cd ImageMagick-${IMAGE_MAGICK_VERSION} && \
     ./configure && \

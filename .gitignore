@@ -3,3 +3,4 @@ target/*
 IMS.war
 
 .idea/
+dockerBuild.sh
