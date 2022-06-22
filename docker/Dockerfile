@@ -170,6 +170,7 @@ RUN ln -s /usr/share/tomcat9/.grails /root/.grails #for backward compatibility
 COPY --from=log-builder --chmod=0755 "/tmp/logrotate-${LOGROTATE_VERSION}/logrotate" /usr/sbin/
 COPY --from=war-builder --chmod=0755 /app/bin/ROOT.war /var/lib/tomcat9/webapps/
 
+RUN mkdir -p /usr/share/tomcat9/.grails
 RUN ln -s /usr/local/bin/vips /usr/bin/vips && ln -s /usr/local/bin/identify /usr/bin/identify
 
 RUN touch /tmp/addHosts.sh
