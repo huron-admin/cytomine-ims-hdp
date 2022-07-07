@@ -15,22 +15,24 @@
 #
 ARG VERSION_NUMBER=v0.0.0-alpha.0
 
+ARG GRAILS_VERSION=2.4.4
 ARG LOGROTATE_VERSION=3.20.1
 ARG VIPS_VERSION=8.12.2
 ARG OPENSLIDE_VERSION=3.4.2-huron
 ARG OPENSLIDE_JAVA_VERSION=0.12.2
-ARG IMAGE_MAGICK_VERSION=7.1.0-37
+ARG IMAGE_MAGICK_VERSION=7.1.0-39
 
 FROM openjdk:8u292-slim AS war-builder
+ARG GRAILS_VERSION
 WORKDIR /app
 
 RUN apt-get update -y && apt-get install wget unzip -y
-RUN mkdir /tools && wget https://github.com/grails/grails-core/releases/download/v2.4.4/grails-2.4.4.zip -O /tools/grails.zip
+RUN mkdir /tools && wget https://github.com/grails/grails-core/releases/download/v${GRAILS_VERSION}/grails-${GRAILS_VERSION}.zip -O /tools/grails.zip
 RUN unzip /tools/grails.zip -d /tools
 
 COPY ./grails-app/conf/BuildConfig.groovy /app/grails-app/conf/BuildConfig.groovy
 
-RUN /tools/grails-2.4.4/bin/grails compile --stacktrace
+RUN /tools/grails-${GRAILS_VERSION}/bin/grails compile --stacktrace
 
 COPY grails-app/ /app/grails-app/
 COPY lib/ /app/lib/
@@ -45,7 +47,7 @@ ENV VERSION_NUMBER_ENV=$VERSION_NUMBER
 RUN sed -i -- 's/app.version=0.0.0/app.version='$VERSION_NUMBER'/g' /app/application.properties
 ENV GRAILS_OPTS="-Xmx2G -Xms512m -XX:MaxPermSize=512m"
 
-RUN /tools/grails-2.4.4/bin/grails war
+RUN /tools/grails-${GRAILS_VERSION}/bin/grails war
 RUN mkdir bin && mv /app/IMS.war /app/bin/ROOT.war
 
 RUN ls /app
@@ -137,9 +139,9 @@ RUN export JAVA_HOME="/usr/local/openjdk-8" && \
 ENV LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 
 # imagemagick 6.8.9-10 (fix problem with DICOM conversion by vips)
-ARG IMAGE_MAGICK_VERSION=6.8.9-10
+ARG IMAGE_MAGICK_VERSION
 RUN cd /tmp && \
-    wget http://www.ring.gr.jp/archives/graphics/ImageMagick/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
+    wget https://www.imagemagick.org/archive/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     cd ImageMagick-${IMAGE_MAGICK_VERSION} && \
     ./configure && \
@@ -162,6 +164,8 @@ RUN cd /tmp && \
 RUN apt-get update -y && \
     apt-get install --no-install-recommends --no-install-suggests -y gdal-bin && \
     rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /usr/share/tomcat9/.grails
 
 # ims specificities
 RUN ln -s /usr/local/tomcat /var/lib/tomcat9 #for backward compatibility
