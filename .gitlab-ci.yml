@@ -36,7 +36,7 @@ build-rc:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH
     - when: never
   script:
-    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:rc-$(date "+%Y%m%d%H%M%S")" .
+    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:rc-${CI_COMMIT_BRANCH}-$(date "+%Y%m%d%H%M%S")" .
 
 build:
   tags: ["docker-build"]
