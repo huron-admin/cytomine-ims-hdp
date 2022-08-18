@@ -34,9 +34,14 @@ build-rc:
   extends: .docker
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_TAG
+    - when: never
     - when: never
   script:
-    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:rc-${CI_COMMIT_BRANCH}-$(date "+%Y%m%d%H%M%S")" .
+    - export TAG="rc-${CI_COMMIT_BRANCH}-$(date "+%Y%m%d%H%M%S")"
+    - docker build -f docker/Dockerfile -t "${CI_REGISTRY_IMAGE}:${TAG}" .
+    - docker tag "${CI_REGISTRY_IMAGE}:${TAG}" "${CI_REGISTRY_IMAGE}:${CI_COMMIT_BRANCH}"
+
 
 build:
   tags: ["docker-build"]
