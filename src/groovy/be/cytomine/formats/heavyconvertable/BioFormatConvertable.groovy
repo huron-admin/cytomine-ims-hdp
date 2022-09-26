@@ -61,7 +61,7 @@ abstract class BioFormatConvertable extends NotNativeFormat implements IHeavyCon
             PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true)
             BufferedReader inp = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()))
 
-            out.println(JsonOutput.toJson(message))
+            log.info(JsonOutput.toJson(message))
             String result = inp.readLine()
             return JSON.parse(result)
         } catch (UnknownHostException e) {

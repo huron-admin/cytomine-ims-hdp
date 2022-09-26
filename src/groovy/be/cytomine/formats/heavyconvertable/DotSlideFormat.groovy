@@ -42,7 +42,7 @@ class DotSlideFormat extends NotNativeFormat implements IHeavyConvertableImageFo
 
     @Override
     def convert() {
-        println "Conversion DotSlide : begin"
+        log.info "Conversion DotSlide : begin"
         String name = this.file.name
 
         // call the dotslide lib
@@ -53,7 +53,7 @@ class DotSlideFormat extends NotNativeFormat implements IHeavyConvertableImageFo
         dotslidebuild.Main.main("-f", "${this.file.absolutePath}/fp.txt",
                 "-io", "${this.file.absolutePath}/$name")
 
-        println "Conversion DotSlide : end"
+        log.info "Conversion DotSlide : end"
 
         File target = new CytomineFile(this.file.parent, name + ".tif")
         if (!target)

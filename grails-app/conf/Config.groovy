@@ -28,9 +28,9 @@ environments {
         grails.config.locations = ["file:${userHome}/dev/Cytomine-bootstrap/configs/ims/ims-config.groovy"]
     }
 }
-println "External configuration file : ${grails.config.locations}"
+log.info "External configuration file : ${grails.config.locations}"
 File configFile = new File(grails.config.locations.first().minus("file:") as String)
-println "Found configuration file ? ${configFile.exists()}"
+log.info "Found configuration file ? ${configFile.exists()}"
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
@@ -92,7 +92,7 @@ environments {
 }
 log4j = {
     appenders {
-       console name:'stdout', layout:pattern(conversionPattern: '%d{dd-MM-yyyy HH:mm:ss,SSS} %5p %c{1} - %m%n')
+       console name:'stdout', layout:pattern(conversionPattern: '%d{dd-MM HH:mm:ss.SSS} %5p %c{1} - %m%n')
     }
 
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers

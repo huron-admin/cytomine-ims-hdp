@@ -48,9 +48,33 @@ class ImageResponseController {
         BufferedInputStream bufferedInputStream = file.newInputStream()
         response.setHeader "Content-disposition", "attachment; filename=\"${file.getName()}\""
         response.setHeader("Content-Length", Long.toString(fileSize))
-        response.outputStream << bufferedInputStream
+
+        byte[] buffer = new byte[1024]
+        int bytesRead = buffer.size()
+        long total = 0
+        int byteCounter = 0;
+
+        long prevTime = System.currentTimeMillis()
+
+        while (bytesRead == buffer.size()) {
+            bytesRead = bufferedInputStream.read(buffer, 0, buffer.size())
+            response.outputStream << buffer
+            response.outputStream.flush()
+            
+            if(byteCounter >= 1024) {
+                byteCounter = 0
+                total++
+                log.info(total)
+            } else {
+                byteCounter++
+            }
+        }
+
+        //response.outputStream << bufferedInputStream
         response.outputStream.flush()
         bufferedInputStream.close()
+
+        log.info ("DOWNLOADED " + file.getName())
     }
 
     /**
