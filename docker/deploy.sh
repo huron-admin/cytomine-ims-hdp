@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (c) 2009-2018. Authors: see NOTICE file.
+# Copyright (c) 2009-2020. Authors: see NOTICE file.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@
 
 bash /tmp/addHosts.sh
 
-#chown -R tomcat7:tomcat7 $IMS_STORAGE_PATH
-#chown -R tomcat7:tomcat7 $FAST_DATA_PATH
+#chown -R tomcat7:tomcat7 $IMS_STORAGE_PATH &
 
 export LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 

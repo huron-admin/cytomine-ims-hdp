@@ -1,0 +1,1835 @@
+{
+   "basePath": "http://localhost-ims",
+   "apis": [
+      {
+         "jsondocId": "e4ff9556-3ea6-42e5-892a-074dfdb022a5",
+         "methods": [
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "c39e16e8-b3d3-4f41-a577-6aafc70bd155",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "1d9166ba-5c4d-4d47-bacd-034c8d1ff0b4",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "GET",
+               "description": "Get the available properties (with, height, resolution, magnitude, ...) of an image",
+               "methodName": "properties",
+               "jsondocId": "78469676-5e86-430f-984c-fead7ccf6b41",
+               "bodyobject": null,
+               "apierrors": [],
+               "path": "/image/properties.json",
+               "response": {
+                  "jsondocId": "26176c4b-4943-4a52-b8cf-9d506dda370a",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "image"
+               },
+               "produces": ["application/json"],
+               "consumes": []
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "7a273358-fffc-4684-9328-deaac661c63f",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "ad097610-154f-4e62-8471-44b67a4a6860",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "d1f11b88-58db-4f86-a426-adc26d5f7074",
+                     "name": "label",
+                     "format": "",
+                     "description": "The requested nested image, identified by label (e.g. macro)",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "0354109c-e300-4abe-b8fc-bc5c48c7595e",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": " The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get a nested (or associated) image (e.g. macro) of an image",
+               "methodName": "nested",
+               "jsondocId": "76389671-9f83-4833-9ff2-a71cdcdb87fe",
+               "bodyobject": {
+                  "jsondocId": "3931ec53-e820-4cc4-97bc-dc2342185f2b",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "image"
+               },
+               "apierrors": [],
+               "path": "/image/nested.jpg",
+               "response": {
+                  "jsondocId": "ecc4c958-cf33-4812-8d00-0504d849cbb7",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "image"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "7af1e594-e87f-4cc5-a345-a525c02982f3",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "41e01dc4-22f8-402a-a9f8-e078c225b852",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "a141bc1c-a87b-44b8-bf94-9b1023e46e59",
+                     "name": "label",
+                     "format": "",
+                     "description": "The requested nested image, identified by label (e.g. macro)",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "ea753bb8-698f-4223-ab0a-1c08274dfb7b",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": " The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get a nested (or associated) image (e.g. macro) of an image",
+               "methodName": "nested",
+               "jsondocId": "09b6b210-0338-42bd-aedf-8a763f5d27a6",
+               "bodyobject": {
+                  "jsondocId": "e5686024-bcda-4d8b-ba31-f3c4fa7de24f",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "image"
+               },
+               "apierrors": [],
+               "path": "/image/nested.png",
+               "response": {
+                  "jsondocId": "27ff518c-b385-4f82-b731-92963177a55a",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "image"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "a557e3ee-be4e-4a68-bc19-fa469734046c",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "23d800d5-9b8a-4215-a1d1-00548befbfbc",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "GET",
+               "description": "Download an image",
+               "methodName": "download",
+               "jsondocId": "33dd80a2-47bb-48ca-a520-9693f5d174b7",
+               "bodyobject": null,
+               "apierrors": [],
+               "path": "/image/download",
+               "response": {
+                  "jsondocId": "d134fa9a-4b32-4aa5-917d-7444272e38ee",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "image"
+               },
+               "produces": ["application/json"],
+               "consumes": []
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "340017c4-18fa-4b37-a0b5-fe235b681ba5",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "1271705c-75a8-4ce0-9c5d-ac4b4f9a522d",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "GET",
+               "description": "Get the list of nested (or associated) images available of an image",
+               "methodName": "associated",
+               "jsondocId": "b67ad892-aa49-4b0a-ad52-e29367c82723",
+               "bodyobject": null,
+               "apierrors": [],
+               "path": "/image/associated.json",
+               "response": {
+                  "jsondocId": "b02d634b-78b7-4821-93d2-845ca34e9bdf",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "image"
+               },
+               "produces": ["application/json"],
+               "consumes": []
+            }
+         ],
+         "name": "image services",
+         "description": "Methods for images (properties, associated images, ...)"
+      },
+      {
+         "jsondocId": "346d7695-795f-46bc-b8c0-1717b99d3c68",
+         "methods": [
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "d756207a-9677-426c-93cb-2e06df6641c8",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c68ee63f-0783-446a-82a1-c204e6dbbdf3",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "802926a1-a27d-47aa-aca3-d66c34f86adf",
+                     "name": "bitPerSample",
+                     "format": "",
+                     "description": "The number of bits per sample of the image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b15f5c04-5c7e-47a0-ac6d-0f8eb2f036fe",
+                     "name": "samplePerPixel",
+                     "format": "",
+                     "description": "The number of sample per pixel of the image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "GET",
+               "description": "Get the histogram and statistics about a slice",
+               "methodName": "histogram",
+               "jsondocId": "e5380189-bd09-4456-88d2-18ebd4454ca3",
+               "bodyobject": null,
+               "apierrors": [],
+               "path": "/slice/histogram.json",
+               "response": {
+                  "jsondocId": "9836b3ae-5151-40f1-9bcc-45ce471cdc9a",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": []
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "04e5e3fb-c6d2-4b2e-9e02-ea13c7d0bf06",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "8e503adf-18b4-42ba-8c04-609917af45f2",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "bd42c5ae-7916-44ff-8321-9881781944c3",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": "The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b5d056d2-cbe7-4496-a673-1645aa4d37ba",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "e2f6cbe8-f04d-40bf-a4cd-11fbe16143fd",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "f485720a-c774-438d-b90a-4db1f9bb8f04",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "9dd819df-15eb-468f-be3c-c633ca00a788",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "60fcc952-03bf-472d-b85f-6ef5b99392a5",
+                     "name": "bits",
+                     "format": "",
+                     "description": "Output bit depth per channel (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get the thumb of a slice",
+               "methodName": "thumb",
+               "jsondocId": "3a4ae183-ece1-4b12-8032-d4a31e8ba863",
+               "bodyobject": {
+                  "jsondocId": "7975e314-7b66-4613-8443-6f7cd65eb486",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "slice"
+               },
+               "apierrors": [],
+               "path": "/slice/thumb.jpg",
+               "response": {
+                  "jsondocId": "5855a8b6-71f3-4f18-a9cf-583069b45a69",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "e2a9cc77-4ed3-4c8b-98ce-0ad29509c127",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "6302e895-e190-43c3-b073-4dbee5a8cafe",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "bf17b573-3ca9-4b85-996f-e2b0787658e6",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": "The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "f0241865-653a-457a-8e0e-4641d0d81fea",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "9afa65ed-19bc-41e9-9bf9-68a20b7074b6",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "15af9870-3497-4c9e-892d-b88185a41105",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "131133a2-7aa2-4e44-8865-6c22962774e3",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "80329c29-32be-4e50-b9a7-94b441c3eb58",
+                     "name": "bits",
+                     "format": "",
+                     "description": "Output bit depth per channel (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get the thumb of a slice",
+               "methodName": "thumb",
+               "jsondocId": "1ad4b50c-e3d3-403b-bbd3-7c00ebe27c71",
+               "bodyobject": {
+                  "jsondocId": "1a960589-e156-4769-a2a7-d3530564e8e5",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "slice"
+               },
+               "apierrors": [],
+               "path": "/slice/thumb.png",
+               "response": {
+                  "jsondocId": "2d95e740-55dd-4c87-8ea7-56a98b65ee70",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "4d2c7e29-b4b1-40db-960f-6d69d9159628",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "473a4303-0551-432e-8eff-a82233e4a237",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4af493b4-d723-4033-a604-0a0bdb9a9c83",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": "The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "53592d82-7adb-4831-8701-a36cd140425c",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c36b4e94-e3d5-40b7-9fba-9158b63109e5",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "92d4d59b-cf6d-461f-b448-8e541dbcbca4",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "e90cfcac-0a68-4dd6-b519-97ca7c4614c2",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "5fdd5c43-782f-4cf4-9433-78a78e244d62",
+                     "name": "bits",
+                     "format": "",
+                     "description": "Output bit depth per channel (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get the thumb of a slice",
+               "methodName": "thumb",
+               "jsondocId": "a11f3286-d9b1-4088-b2b0-dc312c418e46",
+               "bodyobject": {
+                  "jsondocId": "7b771967-d11c-4c05-a83e-c77fb0c6e656",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "slice"
+               },
+               "apierrors": [],
+               "path": "/slice/thumb.tiff",
+               "response": {
+                  "jsondocId": "0b4cf9b9-b9dc-4664-a8d4-b50704c7b219",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "a57fe98c-5ea3-4247-ad18-251a4183f94a",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "ede27f19-b70e-4ed9-8b88-17ffa1b6c27c",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "712accc4-51c0-42bb-8d80-fd80a24f0c02",
+                     "name": "topLeftX",
+                     "format": "",
+                     "description": "The top left X value of the requested ROI",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "1acaf747-23ae-4dbb-a522-b94e382441f9",
+                     "name": "topLeftY",
+                     "format": "",
+                     "description": "The top left Y value of the requested ROI",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b37a5eaa-4b60-442a-afe6-576f876cf15f",
+                     "name": "width",
+                     "format": "",
+                     "description": "The width of the ROI (in pixels)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "24be519f-367d-4224-b788-18850958331c",
+                     "name": "height",
+                     "format": "",
+                     "description": "The height of the ROI (in pixels)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "0dbf3f31-80f4-46bd-81c3-694e7f89ea94",
+                     "name": "imageWidth",
+                     "format": "",
+                     "description": "The image width of the whole image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "7c8bebda-6dda-48e8-9842-65bb6e60b9e4",
+                     "name": "imageHeight",
+                     "format": "",
+                     "description": "The image height of the whole image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "6e4441f8-3472-49aa-a889-2b66beacee4f",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": " The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "10e7ab35-8d30-47b9-8f40-ed198d0fb3ba",
+                     "name": "zoom",
+                     "format": "",
+                     "description": " The zoom used in order to extract the ROI (0 = higher resolution). Ignored if maxSize is used.",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "1cb33091-796f-49f5-a8e4-86e240d9b3c9",
+                     "name": "location",
+                     "format": "",
+                     "description": " A geometry in WKT Format (Well-known text)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "3e9267cc-7dda-4305-ac90-9104a99473c6",
+                     "name": "draw",
+                     "format": "",
+                     "description": " If used, draw the geometry contour on the crop. draw takes precedence over mask & alphamask.",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "e17e5bbb-b903-41d7-922d-96bf2a948137",
+                     "name": "mask",
+                     "format": "",
+                     "description": " If used, return the mask of the geometry (black & white) instead of the crop. mask takes precedence over alphamask",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "ea78619e-ffd0-436c-8ae6-888811751627",
+                     "name": "thickness",
+                     "format": "",
+                     "description": " If draw used, set the thickness of the geometry contour on the crop.",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "1ba5a432-c242-48a4-8657-eed10873bef5",
+                     "name": "color",
+                     "format": "",
+                     "description": " If draw used, set the color of the geometry contour on the crop.",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c769fa17-4152-4e00-a7e0-0410308b0594",
+                     "name": "square",
+                     "format": "",
+                     "description": " If used, try to extends the ROI around the crop to have a square.",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "47f4c9a1-4f52-4b83-bfde-8b28a7a4c895",
+                     "name": "alphaMask",
+                     "format": "",
+                     "description": " If used, return the crop with the mask in the alphachannel (0% to 100%). PNG required",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "77c48f27-c886-43e5-a05b-b14941550b5e",
+                     "name": "drawScaleBar",
+                     "format": "",
+                     "description": "If true, draw a scale bar",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "89c7b2f4-6b0a-4e2f-9e8a-398b29d2f4e7",
+                     "name": "resolution",
+                     "format": "",
+                     "description": "Resolution to print in scale bar if used",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "031ab91e-cb41-4a54-9110-d3a15b6c830c",
+                     "name": "magnification",
+                     "format": "",
+                     "description": "Magnification to print in scale bar if used",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "72b56606-76b3-451d-b49b-164662136be7",
+                     "name": "increaseArea",
+                     "format": "",
+                     "description": "",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "3b8955fa-552f-4360-bb6b-e223f3a6f513",
+                     "name": "safe",
+                     "format": "",
+                     "description": "If true, skip too large ROI (true by default)",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "a23d247c-e7fc-4e63-8f96-a2a481bc6eee",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "64af3295-3d38-4731-8f04-5b6cdbf175a7",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4a47f699-b091-4d7d-b5e5-5e61a9525a1b",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "6046bd90-d020-4af0-9c85-fb70c4f41e5e",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "5cc21dd5-01f8-49d4-95a3-172971904aa4",
+                     "name": "bits",
+                     "format": "",
+                     "description": "Output bit depth per channel (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get the crop of a slice",
+               "methodName": "crop",
+               "jsondocId": "608bf377-cfba-4b2e-8789-e913933d707c",
+               "bodyobject": {
+                  "jsondocId": "6bf375d0-6480-498d-8731-61368b015760",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "slice"
+               },
+               "apierrors": [],
+               "path": "/slice/crop.jpg",
+               "response": {
+                  "jsondocId": "c960f58d-36f7-42e9-b7c7-d7f19fd7efce",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "f7287330-b9ab-4d4e-a3c5-496143f67984",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "885cde8a-5a47-4a17-ae4d-00eb6f24debd",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "52bbc32c-150a-46d6-9a23-23327ccfb27b",
+                     "name": "topLeftX",
+                     "format": "",
+                     "description": "The top left X value of the requested ROI",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "6e6b5c76-eb23-4baa-8475-cb77f4a595c1",
+                     "name": "topLeftY",
+                     "format": "",
+                     "description": "The top left Y value of the requested ROI",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b057477a-ba0b-4e6f-ac65-af237a50ae8b",
+                     "name": "width",
+                     "format": "",
+                     "description": "The width of the ROI (in pixels)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4043dd7f-3e29-4d46-ae52-cb1fa922c6a0",
+                     "name": "height",
+                     "format": "",
+                     "description": "The height of the ROI (in pixels)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "cad86612-a319-4cbb-a899-e05fee741e38",
+                     "name": "imageWidth",
+                     "format": "",
+                     "description": "The image width of the whole image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c289af35-da93-4309-aedc-48fbb1dbc7aa",
+                     "name": "imageHeight",
+                     "format": "",
+                     "description": "The image height of the whole image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "5208f219-ec48-4a55-aa3c-f39114cfd75b",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": " The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "d66e7114-bdd8-49f0-b215-a0e0d2db1481",
+                     "name": "zoom",
+                     "format": "",
+                     "description": " The zoom used in order to extract the ROI (0 = higher resolution). Ignored if maxSize is used.",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "34734c9d-82fa-4ece-be78-f540602ba231",
+                     "name": "location",
+                     "format": "",
+                     "description": " A geometry in WKT Format (Well-known text)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "f0a9df67-f9da-48ed-8f17-7bc0946c0c7d",
+                     "name": "draw",
+                     "format": "",
+                     "description": " If used, draw the geometry contour on the crop. draw takes precedence over mask & alphamask.",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "33e93c96-17f6-4772-bc6f-ae130894a231",
+                     "name": "mask",
+                     "format": "",
+                     "description": " If used, return the mask of the geometry (black & white) instead of the crop. mask takes precedence over alphamask",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "40ae6706-74f9-418b-a1e5-2fd2ee5ec638",
+                     "name": "thickness",
+                     "format": "",
+                     "description": " If draw used, set the thickness of the geometry contour on the crop.",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "3d862e14-0f7d-47df-9ecc-d4d93303faf4",
+                     "name": "color",
+                     "format": "",
+                     "description": " If draw used, set the color of the geometry contour on the crop.",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "796ae9de-9d54-4aab-957f-c34d9d85ef3e",
+                     "name": "square",
+                     "format": "",
+                     "description": " If used, try to extends the ROI around the crop to have a square.",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "0b94d633-c3a0-4ccf-b365-030b3e8273ff",
+                     "name": "alphaMask",
+                     "format": "",
+                     "description": " If used, return the crop with the mask in the alphachannel (0% to 100%). PNG required",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "bde638ba-436e-453b-b466-fd3d304a09f6",
+                     "name": "drawScaleBar",
+                     "format": "",
+                     "description": "If true, draw a scale bar",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "68a7b5bf-4ed0-4e77-8239-8e68614f0062",
+                     "name": "resolution",
+                     "format": "",
+                     "description": "Resolution to print in scale bar if used",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4a486c60-37a5-4e56-96dc-ec62733b6505",
+                     "name": "magnification",
+                     "format": "",
+                     "description": "Magnification to print in scale bar if used",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "3d06acb5-28d4-4372-9635-46677a4f394a",
+                     "name": "increaseArea",
+                     "format": "",
+                     "description": "",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c6cac636-7382-41b3-a1db-4855e15243ba",
+                     "name": "safe",
+                     "format": "",
+                     "description": "If true, skip too large ROI (true by default)",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "8b71977f-4a63-4247-8ac8-dd8711704086",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "9d4f13b0-346f-4a0b-bd0d-4d2034511438",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b03788f1-44b2-4e9b-a6c3-19cccdaa55f4",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "a69dbb92-6b84-44c3-ac27-0c7d1663080a",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "bdacf3bf-789f-4bbb-a7b6-f22e03c2aca7",
+                     "name": "bits",
+                     "format": "",
+                     "description": "Output bit depth per channel (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get the crop of a slice",
+               "methodName": "crop",
+               "jsondocId": "788657cb-cbc1-489c-b83c-c6f89036ed88",
+               "bodyobject": {
+                  "jsondocId": "8b52c486-e5a5-4af2-81d1-acfcaaaa74fe",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "slice"
+               },
+               "apierrors": [],
+               "path": "/slice/crop.png",
+               "response": {
+                  "jsondocId": "4946507e-a7fe-4380-9409-eb17ff41e2aa",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "fa89b57b-7abf-4f5c-8acb-48220055c3ec",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "d4537558-ac83-40ae-b1e7-05366d1ca533",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c6a0a438-2221-4fb0-92da-e3bbe6401a67",
+                     "name": "topLeftX",
+                     "format": "",
+                     "description": "The top left X value of the requested ROI",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "f76bca0c-44af-4a70-a662-13b387fac9ff",
+                     "name": "topLeftY",
+                     "format": "",
+                     "description": "The top left Y value of the requested ROI",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4b0aac5f-be72-4477-b327-beb299747b8b",
+                     "name": "width",
+                     "format": "",
+                     "description": "The width of the ROI (in pixels)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "6a87e668-27cd-454a-a672-e0b06939a98c",
+                     "name": "height",
+                     "format": "",
+                     "description": "The height of the ROI (in pixels)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "ccdac335-44d0-4d02-a8ef-1d3af51483a8",
+                     "name": "imageWidth",
+                     "format": "",
+                     "description": "The image width of the whole image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "dc5235f9-178c-49b5-8f62-60757ec80c0c",
+                     "name": "imageHeight",
+                     "format": "",
+                     "description": "The image height of the whole image",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "8104d563-cee7-492a-b546-b8949eca82cd",
+                     "name": "maxSize",
+                     "format": "",
+                     "description": " The max width or height of the generated thumb",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "65e9f5e1-e643-4c30-9429-4cf8a4ba7632",
+                     "name": "zoom",
+                     "format": "",
+                     "description": " The zoom used in order to extract the ROI (0 = higher resolution). Ignored if maxSize is used.",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "61a82d03-d621-493c-9e71-e0c945e5b3fd",
+                     "name": "location",
+                     "format": "",
+                     "description": " A geometry in WKT Format (Well-known text)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "46b19d88-fbb4-4340-8539-e755f2bebbbd",
+                     "name": "draw",
+                     "format": "",
+                     "description": " If used, draw the geometry contour on the crop. draw takes precedence over mask & alphamask.",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "e36ed1a1-d946-4e26-b520-697733f27620",
+                     "name": "mask",
+                     "format": "",
+                     "description": " If used, return the mask of the geometry (black & white) instead of the crop. mask takes precedence over alphamask",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "aa79c57c-612b-4e12-81e5-eaf0e6a343f4",
+                     "name": "thickness",
+                     "format": "",
+                     "description": " If draw used, set the thickness of the geometry contour on the crop.",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "ec2e1d96-87ae-43d6-a45d-ea5f21be2c03",
+                     "name": "color",
+                     "format": "",
+                     "description": " If draw used, set the color of the geometry contour on the crop.",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "17deb531-beb6-4998-b14b-de41600df047",
+                     "name": "square",
+                     "format": "",
+                     "description": " If used, try to extends the ROI around the crop to have a square.",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "2d3a6f13-e427-4a1a-8ac9-a1b723861fcc",
+                     "name": "alphaMask",
+                     "format": "",
+                     "description": " If used, return the crop with the mask in the alphachannel (0% to 100%). PNG required",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "219f4489-ba4b-4548-92b1-dda3be64efc7",
+                     "name": "drawScaleBar",
+                     "format": "",
+                     "description": "If true, draw a scale bar",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "9b643440-73ee-458e-aef5-6a78bd6dbd91",
+                     "name": "resolution",
+                     "format": "",
+                     "description": "Resolution to print in scale bar if used",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "895d3aa3-33cc-4ee8-946d-7290df7e8d01",
+                     "name": "magnification",
+                     "format": "",
+                     "description": "Magnification to print in scale bar if used",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "f900d514-f28b-4b8f-b75c-a8772652e92b",
+                     "name": "increaseArea",
+                     "format": "",
+                     "description": "",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "25547283-469d-4ba6-92d2-5b81804b9866",
+                     "name": "safe",
+                     "format": "",
+                     "description": "If true, skip too large ROI (true by default)",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "7a705972-ac35-484f-a3e2-e787d495fa0a",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "71abd83b-b452-421f-a65e-29c86799fc65",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "33460feb-b597-42f6-9c5d-700506e6d51f",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "f00c43cf-2b1b-4478-9170-30e234ffea8a",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "c1226f6a-5f96-4860-a42a-488e613d75f5",
+                     "name": "bits",
+                     "format": "",
+                     "description": "Output bit depth per channel (see IIP format)",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Get the crop of a slice",
+               "methodName": "crop",
+               "jsondocId": "cf446367-b3c4-4a38-8cde-ae149f255057",
+               "bodyobject": {
+                  "jsondocId": "628187a4-ea19-4feb-a61e-a03c0e699292",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "slice"
+               },
+               "apierrors": [],
+               "path": "/slice/crop.tiff",
+               "response": {
+                  "jsondocId": "d33ef214-ab98-41d1-b7ad-ed64cf1bb7f6",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "4d6e5959-3344-4fbf-a1fc-df84da9f3c3c",
+                     "name": "zoomify",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "3aa102f1-6d0e-4c98-8732-d053716da26f",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "9bcbb75c-8748-482b-a141-fa51ee29b65f",
+                     "name": "tileGroup",
+                     "format": "",
+                     "description": "The Tile Group (see zoomify format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b61cc05d-1c24-4dd3-8025-aba7e6bb3779",
+                     "name": "z",
+                     "format": "",
+                     "description": "The Z index (see zoomify format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "b54834ac-19f7-409a-8394-6c2d696051cc",
+                     "name": "x",
+                     "format": "",
+                     "description": "The X index (see zoomify format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4082bfac-bd33-40c8-aa37-a69062f9f83e",
+                     "name": "y",
+                     "format": "",
+                     "description": "The Y index (see zoomify format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "d02f5b8e-2aef-4d48-a2aa-edda18d34c96",
+                     "name": "fif",
+                     "format": "",
+                     "description": "The absolute path of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "e5f9d323-13e4-4a37-bbcf-67db6d8a66ac",
+                     "name": "mimeType",
+                     "format": "",
+                     "description": "The mime type of the image",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "73f02495-e13d-46fd-bb9b-a0f724d8c72c",
+                     "name": "tileIndex",
+                     "format": "",
+                     "description": "The Tile Index (see IIP format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "4a192e31-d867-4db5-87da-f69fc3461887",
+                     "name": "z",
+                     "format": "",
+                     "description": "The Z index (see IIP format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "9804f424-b9d1-4d7e-8f9f-c2aaf1c73d8e",
+                     "name": "colormap",
+                     "format": "",
+                     "description": "The absolute path of a colormap file (see IIP format)",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "3f9dd756-8567-4d59-9ad6-be33d7295f42",
+                     "name": "inverse",
+                     "format": "",
+                     "description": "True if colors have to be inversed (see IIP format)",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "0881c138-f19c-4a1f-bb40-052979d4d017",
+                     "name": "contrast",
+                     "format": "",
+                     "description": "Multiply pixels by contrast (see IIP format)",
+                     "type": "float",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "445dcbfe-71c8-4edc-a2ba-ecb93d4125a5",
+                     "name": "gamma",
+                     "format": "",
+                     "description": "Apply gamma correction (see IIP format)",
+                     "type": "float",
+                     "required": "true",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "GET",
+               "description": "Get a tile of an image",
+               "methodName": "tile",
+               "jsondocId": "a681b65d-1ee8-45fc-b1eb-0f150610bd59",
+               "bodyobject": null,
+               "apierrors": [],
+               "path": "/slice/tile",
+               "response": {
+                  "jsondocId": "ee28794e-0b48-4f5a-ae0d-bc09a86e2f22",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "slice"
+               },
+               "produces": ["application/json"],
+               "consumes": []
+            }
+         ],
+         "name": "slice services",
+         "description": "Methods for slices (thumb, crops, ...)"
+      },
+      {
+         "jsondocId": "6b6d8761-2a7f-411f-8baf-e194f1ed1a84",
+         "methods": [
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [
+                  {
+                     "jsondocId": "c4c5c0dd-707e-4774-99a1-fb6ab236d9d8",
+                     "name": "files[]",
+                     "format": "",
+                     "description": "The file content (Multipart)",
+                     "type": "data",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "47592446-18e4-487d-b79d-c89e7d70d20e",
+                     "name": "core",
+                     "format": "",
+                     "description": "URL of linked Cytomine-core",
+                     "type": "String",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "2af75f4b-4950-45f7-933b-6b8fd4361146",
+                     "name": "storage",
+                     "format": "",
+                     "description": "The id of the targeted storage",
+                     "type": "int",
+                     "required": "true",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "040271f5-ef79-429e-967a-3467ec1ebdc6",
+                     "name": "projects",
+                     "format": "",
+                     "description": " The ids of the targeted projects",
+                     "type": "int",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "17812bd8-8a8d-4bda-95a6-c05d71358811",
+                     "name": "sync",
+                     "format": "",
+                     "description": "Whether operations are done synchronously or not (false by default)",
+                     "type": "boolean",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "355bb5e2-5fb8-476d-8967-214cfde38bff",
+                     "name": "keys",
+                     "format": "",
+                     "description": "The keys of the properties to link with image, separated by comma",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  },
+                  {
+                     "jsondocId": "90c04d1e-6721-40f8-b29a-9afc5d19a144",
+                     "name": "values",
+                     "format": "",
+                     "description": "The values of the properties link with image, separated by comma",
+                     "type": "String",
+                     "required": "false",
+                     "allowedvalues": []
+                  }
+               ],
+               "verb": "POST",
+               "description": "Method for uploading an image",
+               "methodName": "upload",
+               "jsondocId": "f39d5aa8-e59c-46bd-8e8e-f4b9c33fa3f1",
+               "bodyobject": {
+                  "jsondocId": "ed55349f-f6e7-41e0-ba05-04462fd7e0ef",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "multiple": "Unknow",
+                  "map": "",
+                  "object": "storage"
+               },
+               "apierrors": [],
+               "path": "/upload",
+               "response": {
+                  "jsondocId": "31adb31c-bcc2-4bc2-9927-d1c0b2ecf0f2",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "storage"
+               },
+               "produces": ["application/json"],
+               "consumes": ["application/json"]
+            },
+            {
+               "headers": [],
+               "pathparameters": [],
+               "queryparameters": [],
+               "verb": "GET",
+               "description": "Method for getting used and free space of the image storage",
+               "methodName": "size",
+               "jsondocId": "f2209834-8757-438f-a383-28b51f7f9996",
+               "bodyobject": null,
+               "apierrors": [],
+               "path": "/storage/size.json",
+               "response": {
+                  "jsondocId": "d6a9f0d7-3826-4a88-ac65-3f4fef775faa",
+                  "mapValueObject": "",
+                  "mapKeyObject": "",
+                  "object": "storage"
+               },
+               "produces": ["application/json"],
+               "consumes": []
+            }
+         ],
+         "name": "upload services",
+         "description": "Methods for uploading images"
+      },
+      {
+         "jsondocId": "7f6c743c-9200-40a1-a769-259ecde3200c",
+         "methods": [{
+            "headers": [],
+            "pathparameters": [],
+            "queryparameters": [
+               {
+                  "jsondocId": "4a14b075-7d6c-4723-9a53-a09d45681a9e",
+                  "name": "url0",
+                  "format": "",
+                  "description": "URL for the tile of the first channel",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "f79756a6-ef1d-454d-b114-6e59c98a3f6e",
+                  "name": "url...",
+                  "format": "",
+                  "description": "URL for the tile of the ... channel",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "e4700d9b-7ac5-4591-ac6b-ba24466bba82",
+                  "name": "urlN",
+                  "format": "",
+                  "description": "URL for the tile of the N channel",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "273b5b5f-6a14-45d8-ab63-2bd64b6a16de",
+                  "name": "color0",
+                  "format": "",
+                  "description": "Color for the tile of the first channel",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "cd2d4066-8ce3-4f11-8410-b443c48fb927",
+                  "name": "color...",
+                  "format": "",
+                  "description": "Color for the tile of the ... channel",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "35a8fdf7-9e1f-4e37-8563-ce9695416d0f",
+                  "name": "colorN",
+                  "format": "",
+                  "description": "Color for the tile of the N channel",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "9715406a-4006-494d-aa3d-c8987e5fb844",
+                  "name": "zoomify",
+                  "format": "",
+                  "description": "The absolute path of the image",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "819eba4c-bc7e-4e1b-b489-d838c9ae03ba",
+                  "name": "mimeType",
+                  "format": "",
+                  "description": "The mime type of the image",
+                  "type": "String",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "f3d55619-4913-46c1-a5a6-af84a8a791b6",
+                  "name": "tileGroup",
+                  "format": "",
+                  "description": "The Tile Group (see zoomify format)",
+                  "type": "int",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "862e9c4a-b001-4c06-b8c6-711598a38b50",
+                  "name": "z",
+                  "format": "",
+                  "description": "The Z index (see zoomify format)",
+                  "type": "int",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "ca933e45-c797-485c-88fb-85514e8f1483",
+                  "name": "x",
+                  "format": "",
+                  "description": "The X index (see zoomify format)",
+                  "type": "int",
+                  "required": "true",
+                  "allowedvalues": []
+               },
+               {
+                  "jsondocId": "a4e97ba4-4a8f-467d-a9db-d305cce39aa2",
+                  "name": "y",
+                  "format": "",
+                  "description": "The Y index (see zoomify format)",
+                  "type": "int",
+                  "required": "true",
+                  "allowedvalues": []
+               }
+            ],
+            "verb": "GET",
+            "description": "Merge multiple channel (multiple image) to an image",
+            "methodName": "merge",
+            "jsondocId": "cb963322-2afb-4136-ba61-e284c50bbd1f",
+            "bodyobject": null,
+            "apierrors": [],
+            "path": "/vision/merge.png",
+            "response": {
+               "jsondocId": "3c5895cc-8c6c-47fb-9e32-96f8c9971281",
+               "mapValueObject": "",
+               "mapKeyObject": "",
+               "object": "vision"
+            },
+            "produces": ["application/json"],
+            "consumes": []
+         }],
+         "name": "vision services",
+         "description": "Methods for image processing services"
+      }
+   ],
+   "objects": [],
+   "version": "0.1"
+}

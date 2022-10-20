@@ -44,8 +44,10 @@ class ImageResponseController {
     }
 
     def responseFile(File file) {
+        long fileSize = file.length()
         BufferedInputStream bufferedInputStream = file.newInputStream()
         response.setHeader "Content-disposition", "attachment; filename=\"${file.getName()}\""
+        response.setHeader("Content-Length", Long.toString(fileSize))
         response.outputStream << bufferedInputStream
         response.outputStream.flush()
         bufferedInputStream.close()

@@ -51,6 +51,11 @@ class StorageController {
     ])
     def upload () {
         try {
+            log.info("\n\n --------------------------- UPLOAD --------------------------- \n")
+
+            for (par in params)
+                log.info "\t $par.key: $par.value"
+
             // Backwards compatibility
             if (params.cytomine) params.core = params.cytomine
             if (params.idStorage) params.storage = params.idStorage
