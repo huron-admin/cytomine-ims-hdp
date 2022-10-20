@@ -99,10 +99,10 @@ RUN export JAVA_HOME="/usr/local/openjdk-8" && \
     ldconfig
 ENV LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 
-# imagemagick 6.8.9-10 (fix problem with DICOM conversion by vips)
-ARG IMAGE_MAGICK_VERSION=6.8.9-10
+# imagemagick (Was 6.8.9-10) (fix problem with DICOM conversion by vips)
+ARG IMAGE_MAGICK_VERSION=6.9.12-66
 RUN cd /tmp && \
-    wget https://www.imagemagick.org/download/releases/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
+    wget https://imagemagick.org/archive/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     cd ImageMagick-${IMAGE_MAGICK_VERSION} && \
     ./configure && \

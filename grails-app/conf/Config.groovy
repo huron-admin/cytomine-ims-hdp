@@ -91,13 +91,8 @@ environments {
     }
 }
 log4j = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
     appenders {
-        file name:'logfile', file:'/tmp/ims.log'
+       console name:'stdout', layout:pattern(conversionPattern: '%d{dd-MM HH:mm:ss.SSS} %5p %c{1} - %m%n')
     }
 
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers
