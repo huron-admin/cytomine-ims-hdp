@@ -1,5 +1,8 @@
 *.class
 target/*
+.vscode/*
 
 .idea/
 .war
+IMS.war
+docker/IMS.war
