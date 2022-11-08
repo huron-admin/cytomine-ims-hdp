@@ -38,6 +38,7 @@ class StorageController {
 
     def uploadService
     def cytomineService
+    def httpClient
 
     @RestApiMethod(description="Method for uploading an image")
     @RestApiParams(params=[
@@ -47,12 +48,16 @@ class StorageController {
             @RestApiParam(name="projects", type="int", paramType = RestApiParamType.QUERY, description = " The ids of the targeted projects", required = false),
             @RestApiParam(name="sync", type="boolean", paramType = RestApiParamType.QUERY, description = "Whether operations are done synchronously or not (false by default)", required = false),
             @RestApiParam(name="keys", type="String", paramType = RestApiParamType.QUERY, description = "The keys of the properties to link with image, separated by comma", required = false),
-            @RestApiParam(name="values", type="String", paramType = RestApiParamType.QUERY, description = "The values of the properties link with image, separated by comma", required = false)
+            @RestApiParam(name="values", type="String", paramType = RestApiParamType.QUERY, description = "The values of the properties link with image, separated by comma", required = false),
+            @RestApiParam(name="index", type="boolean", paramType = RestApiParamType.QUERY, description = "Whether to auto index", required = false),
+            @RestApiParam(name="primarySite", type="String", paramType = RestApiParamType.QUERY, description = "The primary site used for indexing", required = false)
     ])
     def upload () {
+        log.info """
+        █░█ █▀█ █░░ █▀█ ▄▀█ █▀▄   █▀ ▀█▀ ▄▀█ █▀█ ▀█▀
+        █▄█ █▀▀ █▄▄ █▄█ █▀█ █▄▀   ▄█ ░█░ █▀█ █▀▄ ░█░
+        """
         try {
-            log.info("\n\n --------------------------- UPLOAD --------------------------- \n")
-
             for (par in params)
                 log.info "\t $par.key: $par.value"
 
@@ -117,8 +122,8 @@ class StorageController {
             try {
                 responseContent.status = 200;
                 responseContent.name = filename
-                def uploadResult = uploadService.upload(userConnection, storage as Storage, filename, filePath, isSync, projects, properties)
 
+                def uploadResult = uploadService.upload(userConnection, storage as Storage, filename, filePath, isSync, projects, properties)
                 responseContent.uploadedFile = uploadResult.uploadedFile.getAttr()
 
                 def images = []
@@ -133,7 +138,6 @@ class StorageController {
                 }
                 responseContent.images = images
 
-
             } catch(DeploymentException e){
                 response.status = 500;
                 responseContent.status = 500;
@@ -141,8 +145,22 @@ class StorageController {
                 responseContent.files = [[name:filename, size:0, error:responseContent.error]]
             }
 
-            responseContent = [responseContent]
 
+            /* Auto Index */
+            if(params.index) {
+                log.info """
+                █ █▄░█ █▀▄ █▀▀ ▀▄▀
+                █ █░▀█ █▄▀ ██▄ █░█
+                """
+                try {
+                    def fakeID = 103092
+                    userConnection.doGet("/api/lagotto/index/" + fakeID)
+                } catch(DeploymentException e){
+                    log.info(e.getMessage)
+                }
+            }
+
+            responseContent = [responseContent]
             render responseContent as JSON
         }
         catch (CytomineException e) {
