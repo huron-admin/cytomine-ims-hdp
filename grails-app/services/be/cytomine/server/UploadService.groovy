@@ -306,9 +306,8 @@ class UploadService {
                     """
                     try {
                         log.info("ID: " + abstractImage.id + ", PRIMARY SITE: " + uploadInfo.primarySite)
-                        def res = uploadInfo.userConn.doGet("/api/lagotto/index/" + abstractImage.id + "?primarySite=" + uploadInfo.primarySite)    
-                        log.info(res)
-                    } (CytomineException e) {
+                        uploadInfo.userConn.doGet("/api/lagotto/index/" + abstractImage.id + "?primarySite=" + uploadInfo.primarySite)    
+                    } catch (CytomineException e) {
                         log.info(e.getMessage())
                     }
                 }
