@@ -50,12 +50,12 @@ class StorageController {
             @RestApiParam(name="keys", type="String", paramType = RestApiParamType.QUERY, description = "The keys of the properties to link with image, separated by comma", required = false),
             @RestApiParam(name="values", type="String", paramType = RestApiParamType.QUERY, description = "The values of the properties link with image, separated by comma", required = false),
             @RestApiParam(name="index", type="boolean", paramType = RestApiParamType.QUERY, description = "Whether to auto index", required = false),
-            @RestApiParam(name="primarySite", type="String", paramType = RestApiParamType.QUERY, description = "The primary site used for indexing", required = false)
+            @RestApiParam(name="primarySite", type="int", paramType = RestApiParamType.QUERY, description = "The primary site used for indexing", required = false)
     ])
     def upload () {
         log.info """
-        █░█ █▀█ █░░ █▀█ ▄▀█ █▀▄   █▀ ▀█▀ ▄▀█ █▀█ ▀█▀
-        █▄█ █▀▀ █▄▄ █▄█ █▀█ █▄▀   ▄█ ░█░ █▀█ █▀▄ ░█░
+        █░█ █▀█ █░░ █▀█ ▄▀█ █▀▄
+        █▄█ █▀▀ █▄▄ █▄█ █▀█ █▄▀
         """
         try {
             for (par in params)
@@ -123,7 +123,8 @@ class StorageController {
                 responseContent.status = 200;
                 responseContent.name = filename
 
-                def uploadResult = uploadService.upload(userConnection, storage as Storage, filename, filePath, isSync, projects, properties)
+                def uploadResult = uploadService.upload(userConnection, storage as Storage, filename, filePath, isSync, projects, properties,
+                    params.boolean('index'), params.primarySite ? params.int('primarySite') : 0)
                 responseContent.uploadedFile = uploadResult.uploadedFile.getAttr()
 
                 def images = []
@@ -137,30 +138,15 @@ class StorageController {
                     ]
                 }
                 responseContent.images = images
-
             } catch(DeploymentException e){
                 response.status = 500;
                 responseContent.status = 500;
                 responseContent.error = e.getMessage()
                 responseContent.files = [[name:filename, size:0, error:responseContent.error]]
             }
-
-
-            /* Auto Index */
-            if(params.index) {
-                log.info """
-                █ █▄░█ █▀▄ █▀▀ ▀▄▀
-                █ █░▀█ █▄▀ ██▄ █░█
-                """
-                try {
-                    def fakeID = 103092
-                    userConnection.doGet("/api/lagotto/index/" + fakeID)
-                } catch(DeploymentException e){
-                    log.info(e.getMessage)
-                }
-            }
-
+            
             responseContent = [responseContent]
+            log.info(responseContent)
             render responseContent as JSON
         }
         catch (CytomineException e) {

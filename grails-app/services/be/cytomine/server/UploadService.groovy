@@ -57,7 +57,9 @@ class UploadService {
      *
      * @return A map with the root UploadedFile and all the generated AbstractImages
      */
-    def upload(CytomineConnection userConn, Storage storage, String filename, def filePath, boolean isSync, def projects, def properties) {
+    def upload(CytomineConnection userConn, Storage storage, String filename, def filePath, boolean isSync, def projects, def properties, 
+        boolean index = false, int primarySite = 0) 
+    {
         if (!filePath) {
             throw new FileNotFoundException("Got an invalid file. Disk can be full.")
         }
@@ -92,13 +94,15 @@ class UploadService {
         result.uploadedFile = uploadedFile
 
         def uploadInfo = [
-                userConn  : userConn,
-                user      : userConn.getCurrentUser(),
-                storage   : storage,
-                imsServer : imsServer,
-                isSync    : isSync,
-                projects  : projects,
-                properties: properties
+                userConn    : userConn,
+                user        : userConn.getCurrentUser(),
+                storage     : storage,
+                imsServer   : imsServer,
+                isSync      : isSync,
+                projects    : projects,
+                properties  : properties,
+                index       : index,
+                primarySite : primarySite
         ]
 
         if (isSync) {
@@ -118,6 +122,7 @@ class UploadService {
             }
         }
 
+        log.info file
         log.info result
         return result
     }
@@ -218,7 +223,6 @@ class UploadService {
      * @return A list of map [image: AbstractImage, slices: [AbstractSlice]]
      */
     private def deploy(CytomineFile currentFile, UploadedFile uploadedFile, UploadedFile uploadedFileParent, AbstractImage abstractImage, def uploadInfo) {
-
         log.info "Deploy $currentFile"
         def result = [images: [], slices: []]
 
@@ -293,12 +297,26 @@ class UploadService {
                 def metadata = format.cytomineProperties()
                 abstractImage = createAbstractImage(uploadInfo.userConn, uploadedFile, metadata)
                 result.images.add(abstractImage)
+                
+                /* Auto Index */
+                if(uploadInfo.index)  {
+                    log.info """
+                    █ █▄░█ █▀▄ █▀▀ ▀▄▀
+                    █ █░▀█ █▄▀ ██▄ █░█
+                    """
+                    try {
+                        log.info("ID: " + abstractImage.id + ", PRIMARY SITE: " + uploadInfo.primarySite)
+                        def res = uploadInfo.userConn.doGet("/api/lagotto/index/" + abstractImage.id + "?primarySite=" + uploadInfo.primarySite)    
+                        log.info(res)
+                    } (CytomineException e) {
+                        log.info(e.getMessage())
+                    }
+                }
             }
             catch (CytomineException e) {
                 uploadedFile.changeStatus(UploadedFile.Status.ERROR_DEPLOYMENT)
                 throw new DeploymentException(e.getMessage(), result)
             }
-
         }
 
         if (format instanceof NativeFormat) {
@@ -378,9 +396,9 @@ class UploadService {
     }
 
     private AbstractImage createAbstractImage(CytomineConnection userConn, UploadedFile uploadedFile, def metadata) {
+        log.info ("CREATE ABSTRACT IMAGE")
         def image = new AbstractImage(uploadedFile, uploadedFile.getStr('originalFilename'))
         image = image.save(userConn)
-
 
         def props = []
         metadata.each {
@@ -426,7 +444,6 @@ class UploadService {
             Promises.waitAll(promises)
         }
         image.extractUsefulProperties()
-
         return image.fetch(image.id)
     }
 
