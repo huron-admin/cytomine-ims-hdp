@@ -122,9 +122,10 @@ class StorageController {
             try {
                 responseContent.status = 200;
                 responseContent.name = filename
-
+                
+                boolean autoIndex = params.boolean('index')
                 def uploadResult = uploadService.upload(userConnection, storage as Storage, filename, filePath, isSync, projects, properties,
-                    params.boolean('index'), params.primarySite ? params.int('primarySite') : 0)
+                    autoIndex, params.primarySite ? params.int('primarySite') : 0)
                 responseContent.uploadedFile = uploadResult.uploadedFile.getAttr()
 
                 def images = []
