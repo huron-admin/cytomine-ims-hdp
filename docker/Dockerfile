@@ -20,7 +20,7 @@ ARG LOGROTATE_VERSION=3.20.1
 ARG VIPS_VERSION=8.12.2
 ARG OPENSLIDE_VERSION=3.4.2-huron
 ARG OPENSLIDE_JAVA_VERSION=0.12.2
-ARG IMAGE_MAGICK_VERSION=7.1.0-46
+ARG IMAGE_MAGICK_VERSION=7.1.0-52
 
 FROM openjdk:8u292-slim AS war-builder
 ARG GRAILS_VERSION
@@ -139,7 +139,7 @@ RUN export JAVA_HOME="/usr/local/openjdk-8" && \
 ENV LD_LIBRARY_PATH=/usr/local/lib/openslide-java
 
 # imagemagick (Was 6.8.9-10) (fix problem with DICOM conversion by vips)
-ARG IMAGE_MAGICK_VERSION=6.9.12-66
+ARG IMAGE_MAGICK_VERSION
 RUN cd /tmp && \
     wget https://imagemagick.org/archive/ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
     tar xf ImageMagick-${IMAGE_MAGICK_VERSION}.tar.xz && \
